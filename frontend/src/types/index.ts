@@ -1,6 +1,5 @@
-"""
-Tipos TypeScript para el frontend.
-"""
+//Tipos TypeScript para el frontend.
+
 
 export interface Message {
   id: number;
