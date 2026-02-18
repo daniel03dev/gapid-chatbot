@@ -1,0 +1,78 @@
+services:
+  # Base de datos PostgreSQL
+  db:
+    image: postgres:14-alpine
+    container_name: gapid-db
+    environment:
+      POSTGRES_DB: gapid_db
+      POSTGRES_USER: gapid_user
+      POSTGRES_PASSWORD: gapid_password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - gapid-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U gapid_user"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Backend Django
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: gapid-backend
+    command: sh -c "chmod +x docker-entrypoint.sh && ./docker-entrypoint.sh python manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - ./backend:/app
+      - ./data:/app/data
+    ports:
+      - "8000:8000"
+    environment:
+      - DEBUG=True
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_NAME=gapid_db
+      - DB_USER=gapid_user
+      - DB_PASSWORD=gapid_password
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - gapid-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/api/status/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Frontend Next.js
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: gapid-frontend
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+      - /app/.next
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:8000/api
+    depends_on:
+      - backend
+    networks:
+      - gapid-network
+    command: npm run dev
+
+networks:
+  gapid-network:
+    driver: bridge
+
+volumes:
+  postgres_data:
