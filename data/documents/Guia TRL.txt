@@ -1,0 +1,892 @@
+GUÍA PARA LA EVALUACIÓN DEL NIVEL DE MADURACIÓN
+TECNOLÓGICA (TRL)
+1. INTRODUCCIÓN ........................................................................................................... 2
+2. MARCO TEÓRICO ........................................................................................................ 3
+2.1. ¿Qué es el nivel de maduración tecnológica? ................................................ 3
+2.2. IMPORTANCIA Y LIMITANTES DE UTILIZAR LA ESCALA TRL .................................................. 3
+2.3. TRL 1 A 3 PLANTEAMIENTO, INVESTIGACIÓN Y DESARROLLO ............................................ 4
+2.4. TRL 4 A 6 DEMOSTRACIÓN DE LA TECNOLOGÍA ............................................................. 4
+2.5. TRL 7 A 9 PRODUCCIÓN Y DESPLIEGUE ......................................................................... 5
+3. PREPARACIÓN PARA LA EVALUACIÓN TRL ................................................................ 5
+3.1. HERRAMIENTAS PARA DETERMINAR EL NIVEL DE TRL ........................................................ 5
+3.2. IMPORTANCIA DE PRESENTAR EVALUACIONES Y PRUEBAS REALIZADAS A LA TECNOLOGÍA .... 8
+3.3. ¿QUÉ IMPLICA PASAR DE UN NIVEL DE TRL A OTRO? ...................................................... 8
+4. USO DE LOS RESULTADOS DE LAS EVALUACIONES DE TRL ......................................... 9
+4.1. TRANSFERENCIA DE LA TECNOLOGÍA ............................................................................ 9
+4.2. FINANCIAMIENTO ...................................................................................................... 9
+5. EJEMPLOS PRÁCTICOS .............................................................................................. 10
+5.1. DESARROLLO DE SOFTWARE....................................................................................... 10
+5.2. DESARROLLO DE UN VACUNA BIOTECNOLÓGICA ........................................................ 11
+5.3. Desarrollo de una innovación en el sector agroindustrial. ............................. 12
+6. FUENTES CONSULTADAS ............................................................................................ 13
+Av. Faro # 2350 piso 4-M Colonia Verde Valle CP 44550
+Guadalajara, Jalisco Tel.: (33) 12535611 /12/ 13
+
+1.
+INTRODUCCIÓN
+La tecnología ha sido descrita como motor en el progreso, la creación de
+riqueza y, por lo tanto, el crecimiento económico desde la primer revolución
+industrial. Sin embargo, la tecnología, por sí misma, no genera riqueza. Más bien, son
+los productos y servicios generados como resultado de la aplicación de invenciones
+o innovaciones tecnológicas
+a través de la
+comercialización los que
+generan riqueza. Diversas
+instituciones públicas y
+privadas se han centrado en
+financiar proyectos
+tecnológicos, siendo uno de
+los mayores desafíos elegir
+correctamente en qué
+tecnologías invertir y saber
+cuándo están listas o lo
+suficientemente maduras
+para ser consideradas para
+un sistema/producto en
+particular. La mala selección
+y gestión de tecnologías
+puede causar graves
+pérdidas económicas y, a
+largo plazo (si persiste la
+mala gestión), puede hacer
+que la organización no
+pueda competir en los
+mercados en los que solía
+prosperar.
+El modelo que mayor reconocimiento y difusión internacional ha tenido para
+medir la preparación o disponibilidad tecnológica en las diferentes etapas de un
+proyecto tecnológico, es la Figura 1. Niveles de Madurez Tecnológica desarrollados por la
+escala de nueve niveles TRL NASA
+(del inglés, Technological
+Readiness Level), método diseñado por la NASA en la década de los 70’s, para
+proyectos o programas en los ámbitos aeroespaciales. Los nueve niveles de la
+escala TRL se muestran en la figura 1.
+Av. Faro # 2350 piso 4-M Colonia Verde Valle CP 44550
+Guadalajara, Jalisco Tel.: (33) 12535611 /12/ 13
+
+Es por tanto, un propósito de esta guía, proporcionar información respecto de
+las características principales de la escala TRL y de lo que se debe considerar para
+clasificar el estado de desarrollo de una tecnología.
+2.
+MARCO TEÓRICO
+3. ¿Qué es el nivel de maduración tecnológica?
+La madurez tecnológica es el grado en que una tecnología es capaz de
+producir los resultados esperados. No hay muchas métricas y/o herramientas
+desarrolladas para medir qué tan preparada está una tecnología. La metodología
+más aceptada universalmente para la evaluación es la escala TRL. Es importante
+mencionar que hay varias versiones de la escala TRL, dependiendo de la aplicación
+(software, fabricación, medicamentos, biotecnología, etc.), pero todas evalúan una
+tecnología en función de la cantidad de desarrollo completado, creación de
+prototipos y pruebas dentro de una variedad de entornos desde el laboratorio, su
+demostración en entornos relevantes y hasta la comercialización.
+El nivel más bajo, TRL 1, indica que la información documentada de la
+investigación científica básica está dando su primer paso de una idea a una
+aplicación práctica. Una tecnología que ha logrado TRL 9 es aquella que se ha
+incorporado completamente a un sistema más grande. Se ha demostrado que
+funciona sin problemas y se considera operativa. La distancia entre TRL 1 y TRL 9 a
+menudo equivale a años de estudios de investigación, modelado de prototipos,
+construcción y prueba de componentes, integración de componentes probados en
+otros sistemas y más pruebas en el laboratorio y en el mundo real.
+4. IMPORTANCIA Y LIMITANTES DE UTILIZAR LA ESCALA TRL
+La importancia de determinar el nivel de maduración tecnológica facilita la
+toma de decisiones y plantea un escenario realista de las etapas que se necesitan
+avanzar para llegar al mercado. También pueden facilitar la comunicación entre los
+investigadores, instituciones e inversionistas durante todo el desarrollo y en los puntos
+de decisión clave al proporcionar un lenguaje común para discutir la preparación
+de la tecnología y los riesgos técnicos relacionados. Finalmente, los resultados
+pueden informar otras evaluaciones y actividades de planificación, como
+estimaciones de costos y cronogramas, evaluaciones de riesgos y planes de
+maduración de la tecnología.
+Av. Faro # 2350 piso 4-M Colonia Verde Valle CP 44550
+Guadalajara, Jalisco Tel.: (33) 12535611 /12/ 13
+
+Es importante considerar que la evaluación de la escala TRL se enfoca
+únicamente en las pruebas completadas en el desarrollo de una tecnología, por lo
+que la gama de usos apropiados como herramienta de evaluación es bastante
+limitada. La escala TRL no identifica riesgos o desafíos en el desarrollo de la
+tecnología. Por lo tanto, es importante tener claro que:
+• Es un indicador asociado con el esfuerzo y estado de desarrollo de una
+tecnología, no con el tiempo.
+• No determina el impacto o beneficio potencial de la tecnología.
+• Por sí misma no va a asegurar que la transferencia de la tecnología se
+lleve a cabo.
+• No determina el mercado de la tecnología.
+5. TRL 1 A 3 PLANTEAMIENTO, INVESTIGACIÓN Y DESARROLLO
+En los primeros tres niveles de la escala TRL se da la investigación básica,
+donde a través de la observación de principios generales se plantea un problema o
+necesidad, se investiga una posible solución y se desarrollan estudios de laboratorio
+para validar físicamente y/o a través de una simulación en un medio digital
+(software) la solución propuesta.
+Particularmente:
+• En el nivel 1 se desarrolla la observación de principios básicos resultando
+de la investigación científica y se plantea un problema o necesidad.
+• En el nivel 2 se proponen posibles aplicaciones prácticas que pueden
+llegar a ser una invención.
+• En el nivel 3 se valida la idea, la cual ya incluye actividades de
+investigación y desarrollo como estudios analíticos y pruebas a nivel
+laboratorio o mediante su simulación en un medio digital (software).
+6. TRL 4 A 6 DEMOSTRACIÓN DE LA TECNOLOGÍA
+Estos niveles se consideran medulares en la transferencia tecnológica o
+financiamiento, ya que en estos se valida el funcionamiento de la tecnología en
+entornos de laboratorio y relevantes. Por “entorno relevante” se entiende un
+escenario donde se probará el desarrollo en condiciones reales o que se aproximan
+o simulan suficientemente a las condiciones existentes en un entorno real u objetivo.
+En este sentido:
+Av. Faro # 2350 piso 4-M Colonia Verde Valle CP 44550
+Guadalajara, Jalisco Tel.: (33) 12535611 /12/ 13
+
+• En el nivel 4 los componentes han sido validados y se propone un
+prototipo.
+• En el nivel 5 el prototipo propuesto se somete a diversos análisis en
+entornos relevantes pero aún en condiciones controladas.
+• En el nivel 6 continua la validación del prototipo en un entorno relevante,
+sin embargo, se añaden elementos de simulación que imitan con mayor
+grado de certidumbre las condiciones existentes en el entorno real u
+objetivo.
+7. TRL 7 A 9 PRODUCCIÓN Y DESPLIEGUE
+Los mayoría de los problemas que se pueden presentar en los últimos niveles
+son mínimos, sin embargo, se pueden utilizar herramientas para mitigar los riesgos y
+problemáticas que puedan surgir en el entorno de operación real, en este sentido
+son ajustes que no involucraran un retroceso en el desarrollo tecnológico. Se inicia el
+proceso de madurez de la manufactura para la producción de la tecnología a gran
+escala. Con base en lo anterior:
+• En el nivel 7 los prototipos que demostraron en ciertas condiciones ser
+funcionales, se van a probar a un nivel operativo en campo, con todas
+las condiciones que se requieren y el tiempo suficiente para concluir que
+funciona. Incluso, son puestas a prueba en condiciones de estrés o
+adversas, para probar ambientes no favorables que se pudieran
+presentar en el entorno real y verificar si existe la capacidad en el
+prototipo para seguir siendo funcional.
+• En el nivel 8 la tecnología está en su forma final, aprobó y cumplió con
+las expectativas para las que se desarrolló y también cumplió con
+especificaciones de diseño y normatividad.
+• En el nivel 9 la tecnología llega al mercado y logra satisfacer las
+necesidades del usuario final.
+8.
+PREPARACIÓN PARA LA EVALUACIÓN TRL
+9. HERRAMIENTAS PARA DETERMINAR EL NIVEL DE TRL
+A continuación, se proporcionarán diferentes preguntas para facilitar la
+evaluación del nivel TRL, así como la evidencias que se espera obtener en cada uno
+de los niveles. Contestando las preguntas y evaluando los documentos que se tienen
+relacionados con la tecnología se podrá identificar el nivel de TRL en el que la
+tecnología se encuentra.
+Av. Faro # 2350 piso 4-M Colonia Verde Valle CP 44550
+Guadalajara, Jalisco Tel.: (33) 12535611 /12/ 13
+
+SI NO EVIDENCIA
+¿El concepto resuelve un
+problema o necesidad?
+Se pueden incluir estudios en papel de las
+NIVEL ¿Los principios científicos básicos propiedades básicas del concepto
+1 apoyan el concepto? propuesto y las ventajas que presentará
+frente al estado de la técnica.
+¿Se ha desarrollado la
+metodología o el enfoque de
+desarrollo tecnológico?
+¿Se describen al menos en parte
+los componentes del sistema y/o
+la interfaz de usuario?
+Se pueden presentar publicaciones u otras
+¿Se identifican las aplicaciones referencias que describan la aplicación que
+NIVEL
+potenciales del sistema? se está considerando y que proporcionará
+2
+análisis para respaldar el concepto
+¿Los análisis o experimentos
+propuesto.
+preliminares confirman que la
+aplicación podría satisfacer las
+necesidades del usuario?
+¿Está plenamente establecida la
+viabilidad del sistema?
+¿Los experimentos o el modelado
+y la simulación validan las
+predicciones de rendimiento de la
+La evidencia incluye estudios analíticos
+capacidad del sistema?
+pruebas de componentes por separado a
+NIVEL ¿Los componentes de la solución
+componentes integrados. El modelado y la
+3 se han definido?
+simulación pueden usarse para
+¿Se han realizado pruebas de tipo
+complementar los experimentos físicos.
+experimental que demuestran el
+funcionamiento por separado de
+los componentes?
+¿Se establecen métricas de
+desempeño del sistema?
+¿Están documentados los
+requisitos del usuario final?
+¿Existe un plan de integración
+preliminar plausible y se La evidencia incluye los resultados de los
+demuestra la compatibilidad de experimentos integrados y las estimaciones
+los componentes? de cómo los componentes experimentales y
+¿Se probaron con éxito los los resultados de las pruebas experimentales
+NIVEL
+componentes individuales en un difieren de los objetivos de rendimiento del
+4
+entorno de laboratorio (un sistema esperados.
+entorno de prueba totalmente Se propone en este nivel de madurez
+controlado donde se prueba un ingresar una solicitud de patente, modelo
+número limitado de funciones de utilidad y/o diseño industrial.
+críticas)?
+¿Los componentes de la solución
+son novedoso?
+Av. Faro # 2350 piso 4-M Colonia Verde Valle CP 44550
+Guadalajara, Jalisco Tel.: (33) 12535611 /12/ 13
+
+ |  |  |  |  | SI |  |  | NO |  |  | EVIDENCIA | 
+NIVEL
+1 | ¿El concepto resuelve un
+problema o necesidad? |  |  |  |  |  |  |  |  | Se pueden incluir estudios en papel de las
+propiedades básicas del concepto
+propuesto y las ventajas que presentará
+frente al estado de la técnica. |  | 
+ |  | ¿Los principios científicos básicos |  |  |  |  |  |  |  |  |  | 
+ |  | apoyan el concepto? |  |  |  |  |  |  |  |  |  | 
+ |  | ¿Se ha desarrollado la |  |  |  |  |  |  |  |  |  | 
+ |  | metodología o el enfoque de |  |  |  |  |  |  |  |  |  | 
+ |  | desarrollo tecnológico? |  |  |  |  |  |  |  |  |  | 
+NIVEL
+2 |  | ¿Se describen al menos en parte |  |  |  |  |  |  |  | Se pueden presentar publicaciones u otras
+referencias que describan la aplicación que
+se está considerando y que proporcionará
+análisis para respaldar el concepto
+propuesto. |  | 
+ |  | los componentes del sistema y/o |  |  |  |  |  |  |  |  |  | 
+ |  | la interfaz de usuario? |  |  |  |  |  |  |  |  |  | 
+ | ¿Se identifican las aplicaciones
+potenciales del sistema? |  |  |  |  |  |  |  |  |  |  | 
+ |  | ¿Los análisis o experimentos |  |  |  |  |  |  |  |  |  | 
+ |  | preliminares confirman que la |  |  |  |  |  |  |  |  |  | 
+ |  | aplicación podría satisfacer las |  |  |  |  |  |  |  |  |  | 
+ |  | necesidades del usuario? |  |  |  |  |  |  |  |  |  | 
+NIVEL
+3 |  | ¿Está plenamente establecida la |  |  |  |  |  |  |  | La evidencia incluye estudios analíticos
+pruebas de componentes por separado a
+componentes integrados. El modelado y la
+simulación pueden usarse para
+complementar los experimentos físicos. |  | 
+ |  | viabilidad del sistema? |  |  |  |  |  |  |  |  |  | 
+ |  | ¿Los experimentos o el modelado |  |  |  |  |  |  |  |  |  | 
+ |  | y la simulación validan las |  |  |  |  |  |  |  |  |  | 
+ |  | predicciones de rendimiento de la |  |  |  |  |  |  |  |  |  | 
+ |  | capacidad del sistema? |  |  |  |  |  |  |  |  |  | 
+ |  | ¿Los componentes de la solución |  |  |  |  |  |  |  |  |  | 
+ |  | se han definido? |  |  |  |  |  |  |  |  |  | 
+ |  | ¿Se han realizado pruebas de tipo |  |  |  |  |  |  |  |  |  | 
+ |  | experimental que demuestran el |  |  |  |  |  |  |  |  |  | 
+ |  | funcionamiento por separado de |  |  |  |  |  |  |  |  |  | 
+ |  | los componentes? |  |  |  |  |  |  |  |  |  | 
+ | ¿Se establecen métricas de
+desempeño del sistema? |  |  |  |  |  |  |  |  |  |  | 
+NIVEL
+4 |  | ¿Están documentados los |  |  |  |  |  |  |  | La evidencia incluye los resultados de los
+experimentos integrados y las estimaciones
+de cómo los componentes experimentales y
+los resultados de las pruebas experimentales
+difieren de los objetivos de rendimiento del
+sistema esperados.
+Se propone en este nivel de madurez
+ingresar una solicitud de patente, modelo
+de utilidad y/o diseño industrial. |  | 
+ |  | requisitos del usuario final? |  |  |  |  |  |  |  |  |  | 
+ |  | ¿Existe un plan de integración |  |  |  |  |  |  |  |  |  | 
+ |  | preliminar plausible y se |  |  |  |  |  |  |  |  |  | 
+ |  | demuestra la compatibilidad de |  |  |  |  |  |  |  |  |  | 
+ |  | los componentes? |  |  |  |  |  |  |  |  |  | 
+ |  | ¿Se probaron con éxito los |  |  |  |  |  |  |  |  |  | 
+ |  | componentes individuales en un |  |  |  |  |  |  |  |  |  | 
+ |  | entorno de laboratorio (un |  |  |  |  |  |  |  |  |  | 
+ |  | entorno de prueba totalmente |  |  |  |  |  |  |  |  |  | 
+ |  | controlado donde se prueba un |  |  |  |  |  |  |  |  |  | 
+ |  | número limitado de funciones |  |  |  |  |  |  |  |  |  | 
+ |  | críticas)? |  |  |  |  |  |  |  |  |  | 
+ | ¿Los componentes de la solución
+son novedoso? |  |  |  |  |  |  |  |  |  |  | 
+
+¿El concepto resuelve un
+problema o necesidad?
+
+Se pueden incluir estudios en papel de las
+propiedades básicas del concepto
+propuesto y las ventajas que presentará
+frente al estado de la técnica.
+
+NIVEL
+1
+
+Se pueden presentar publicaciones u otras
+referencias que describan la aplicación que
+se está considerando y que proporcionará
+análisis para respaldar el concepto
+propuesto.
+
+NIVEL
+2
+
+La evidencia incluye estudios analíticos
+pruebas de componentes por separado a
+componentes integrados. El modelado y la
+simulación pueden usarse para
+complementar los experimentos físicos.
+
+NIVEL
+3
+
+¿Se establecen métricas de
+desempeño del sistema?
+
+La evidencia incluye los resultados de los
+experimentos integrados y las estimaciones
+de cómo los componentes experimentales y
+los resultados de las pruebas experimentales
+difieren de los objetivos de rendimiento del
+sistema esperados.
+Se propone en este nivel de madurez
+ingresar una solicitud de patente, modelo
+de utilidad y/o diseño industrial.
+
+NIVEL
+4
+
+¿Los componentes de la solución
+son novedoso?
+
+¿Se definió el entorno relevante
+de pruebas?
+¿El entorno simula las condiciones La evidencia incluye los resultados de las
+de operación? pruebas a escala de laboratorio, el análisis
+de las diferencias entre el laboratorio y el
+NIVEL ¿Se realizaron las pruebas en el
+eventual sistema operativo/entorno, y el
+5 entorno relevante?
+análisis de lo que significan los resultados
+¿Se considera que el desarrollo ha experimentales para el eventual sistema
+conseguido el nivel de prototipo operativo/entorno.
+funcional?
+¿Se han definido variables de
+escalamiento?
+¿Se conoce completamente el
+entorno operativo (es decir, la
+comunidad de usuarios, el
+entorno físico y las características
+de los datos de entrada, según
+corresponda)?
+La evidencia incluye los resultados de las
+¿Se probó el prototipo en un
+pruebas a escala de ingeniería y el análisis
+entorno realista y relevante fuera
+de las diferencias entre la escala de
+NIVEL del laboratorio?
+ingeniería, el sistema / entorno del prototipo
+6
+¿Las variables de escalamiento y el análisis de lo que significan los
+han sido definidas? resultados experimentales para el eventual
+sistema operativo / entorno.
+¿Se puede llevar la tecnología a
+un ambiente operativo?
+¿El prototipo satisface todos los
+requisitos operativos cuando se
+enfrenta a condiciones reales?
+¿Se demuestra el prototipo
+completamente integrado en un
+entorno operativo (es decir,
+condiciones del mundo real,
+incluida la comunidad de
+usuarios)? La evidencia incluye los resultados de las
+¿Se demostró la escalabilidad de pruebas y análisis a gran escala de las
+la tecnología? diferencias entre el entorno de prueba y el
+NIVEL
+análisis de lo que significan los resultados
+7 ¿Se demostró la estabilidad de la
+experimentales para el eventual sistema
+tecnología?
+operativo / entorno. El diseño final está
+¿Son los componentes disponibles prácticamente completo.
+representativos de los
+componentes de producción?
+¿Se prueban todas las interfaces
+individualmente en condiciones
+de estrés y anómalas?
+¿Es reproducible?
+NIVEL La evidencia incluye resultados que
+¿La tecnología está en su punto
+8 demuestran que la tecnología funciona en
+final?
+Av. Faro # 2350 piso 4-M Colonia Verde Valle CP 44550
+Guadalajara, Jalisco Tel.: (33) 12535611 /12/ 13
+
+NIVEL
+5 | ¿Se definió el entorno relevante
+de pruebas? |  |  |  |  |  |  |  |  | La evidencia incluye los resultados de las
+pruebas a escala de laboratorio, el análisis
+de las diferencias entre el laboratorio y el
+eventual sistema operativo/entorno, y el
+análisis de lo que significan los resultados
+experimentales para el eventual sistema
+operativo/entorno.
+ | ¿El entorno simula las condiciones
+de operación? |  |  |  |  |  |  |  |  | 
+ | ¿Se realizaron las pruebas en el
+entorno relevante? |  |  |  |  |  |  |  |  | 
+ |  | ¿Se considera que el desarrollo ha |  |  |  |  |  |  |  | 
+ |  | conseguido el nivel de prototipo |  |  |  |  |  |  |  | 
+ |  | funcional? |  |  |  |  |  |  |  | 
+ |  | ¿Se han definido variables de |  |  |  |  |  |  |  | 
+ |  | escalamiento? |  |  |  |  |  |  |  | 
+NIVEL
+6 |  | ¿Se conoce completamente el |  |  |  |  |  |  |  | La evidencia incluye los resultados de las
+pruebas a escala de ingeniería y el análisis
+de las diferencias entre la escala de
+ingeniería, el sistema / entorno del prototipo
+y el análisis de lo que significan los
+resultados experimentales para el eventual
+sistema operativo / entorno.
+ |  | entorno operativo (es decir, la |  |  |  |  |  |  |  | 
+ |  | comunidad de usuarios, el |  |  |  |  |  |  |  | 
+ |  | entorno físico y las características |  |  |  |  |  |  |  | 
+ |  | de los datos de entrada, según |  |  |  |  |  |  |  | 
+ |  | corresponda)? |  |  |  |  |  |  |  | 
+ |  | ¿Se probó el prototipo en un |  |  |  |  |  |  |  | 
+ |  | entorno realista y relevante fuera |  |  |  |  |  |  |  | 
+ |  | del laboratorio? |  |  |  |  |  |  |  | 
+ | ¿Las variables de escalamiento
+han sido definidas? | ¿Las variables de escalamiento |  |  |  |  |  |  |  | 
+ | ¿Se puede llevar la tecnología a
+un ambiente operativo? |  |  |  |  |  |  |  |  | 
+ | ¿El prototipo satisface todos los
+requisitos operativos cuando se
+enfrenta a condiciones reales? |  |  |  |  |  |  |  |  | 
+NIVEL
+7 |  | ¿Se demuestra el prototipo |  |  |  |  |  |  |  | La evidencia incluye los resultados de las
+pruebas y análisis a gran escala de las
+diferencias entre el entorno de prueba y el
+análisis de lo que significan los resultados
+experimentales para el eventual sistema
+operativo / entorno. El diseño final está
+prácticamente completo.
+ |  | completamente integrado en un |  |  |  |  |  |  |  | 
+ |  | entorno operativo (es decir, |  |  |  |  |  |  |  | 
+ |  | condiciones del mundo real, |  |  |  |  |  |  |  | 
+ |  | incluida la comunidad de |  |  |  |  |  |  |  | 
+ |  | usuarios)? |  |  |  |  |  |  |  | 
+ |  | ¿Se demostró la escalabilidad de |  |  |  |  |  |  |  | 
+ |  | la tecnología? |  |  |  |  |  |  |  | 
+ | ¿Se demostró la estabilidad de la
+tecnología? |  |  |  |  |  |  |  |  | 
+ |  | ¿Son los componentes disponibles |  |  |  |  |  |  |  | 
+ |  | representativos de los |  |  |  |  |  |  |  | 
+ |  | componentes de producción? |  |  |  |  |  |  |  | 
+ |  | ¿Se prueban todas las interfaces |  |  |  |  |  |  |  | 
+ |  | individualmente en condiciones |  |  |  |  |  |  |  | 
+ |  | de estrés y anómalas? |  |  |  |  |  |  |  | 
+NIVEL
+8 |  | ¿Es reproducible? |  |  |  |  |  |  |  | La evidencia incluye resultados que
+demuestran que la tecnología funciona en
+ |  | ¿La tecnología está en su punto |  |  |  |  |  |  |  | 
+ |  | final? |  |  |  |  |  |  |  | 
+
+pruebas a escala de laboratorio, el análisis
+de las diferencias entre el laboratorio y el
+eventual sistema operativo/entorno, y el
+análisis de lo que significan los resultados
+experimentales para el eventual sistema
+operativo/entorno.
+
+La evidencia incluye los resultados de las
+pruebas a escala de ingeniería y el análisis
+de las diferencias entre la escala de
+ingeniería, el sistema / entorno del prototipo
+y el análisis de lo que significan los
+resultados experimentales para el eventual
+sistema operativo / entorno.
+
+NIVEL
+6
+
+¿El prototipo satisface todos los
+requisitos operativos cuando se
+enfrenta a condiciones reales?
+
+La evidencia incluye los resultados de las
+pruebas y análisis a gran escala de las
+diferencias entre el entorno de prueba y el
+análisis de lo que significan los resultados
+experimentales para el eventual sistema
+operativo / entorno. El diseño final está
+prácticamente completo.
+
+NIVEL
+7
+
+NIVEL
+8
+
+La evidencia incluye resultados que
+demuestran que la tecnología funciona en
+
+¿Se demostró el cumplimiento de su forma final y en las condiciones
+las necesidades del usuario final? esperadas.
+¿La tecnología está probada en
+un entorno operativo (es decir,
+cumple con las medidas de
+desempeño objetivo)?
+¿La tecnología cumple con su
+propósito y funcionalidad
+declarados tal como se diseñó?
+¿Se completó con éxito un
+riguroso proceso de prueba y
+evaluación?
+¿La tecnología está
+implementada en su entorno
+operativo previsto?
+¿Se difunde información sobre la La evidencia incluye resultados del sistema
+NIVEL
+tecnología a la comunidad de probado en un entorno operativo o misión
+9
+usuarios? real.
+¿La tecnología es adoptada por
+la comunidad de usuarios?
+10. IMPORTANCIA DE PRESENTAR EVALUACIONES Y PRUEBAS REALIZADAS A LA TECNOLOGÍA
+Documentar todos los resultados obtenidos de las evaluaciones y pruebas
+realizadas desde el inicio de una investigación tecnológica resulta relevante en la
+toma de decisiones, modificaciones a la tecnología e incluso su abandono. De igual
+forma, facilita su evaluación a través de la escala TRL ya que como se ha
+mencionado, la evaluación se enfoca únicamente en las pruebas completadas en
+el desarrollo de una tecnología.
+11. ¿QUÉ IMPLICA PASAR DE UN NIVEL DE TRL A OTRO?
+Es importante considerar que pasar de un nivel a otro en la escala de
+evaluación TRL implica:
+• Recursos humanos
+• Recursos materiales
+• Recursos regulatorios
+Por lo tanto, es importante definir en qué nivel se encuentra la tecnología,
+que necesitamos para pasar al siguiente nivel y si contamos con los recursos
+suficientes para lograrlo. De no ser así, podemos entonces considerar su promoción
+para su transferencia.
+Av. Faro # 2350 piso 4-M Colonia Verde Valle CP 44550
+Guadalajara, Jalisco Tel.: (33) 12535611 /12/ 13
+
+ |  | ¿Se demostró el cumplimiento de |  |  |  | su forma final y en las condiciones
+esperadas.
+ |  | las necesidades del usuario final? |  |  |  | 
+ |  | ¿La tecnología está probada en |  |  |  | 
+ |  | un entorno operativo (es decir, |  |  |  | 
+ |  | cumple con las medidas de |  |  |  | 
+ |  | desempeño objetivo)? |  |  |  | 
+ |  | ¿La tecnología cumple con su |  |  |  | 
+ |  | propósito y funcionalidad |  |  |  | 
+ |  | declarados tal como se diseñó? |  |  |  | 
+ |  | ¿Se completó con éxito un |  |  |  | 
+ |  | riguroso proceso de prueba y |  |  |  | 
+ |  | evaluación? |  |  |  | 
+NIVEL
+9 |  | ¿La tecnología está |  |  |  | La evidencia incluye resultados del sistema
+probado en un entorno operativo o misión
+real.
+ |  | implementada en su entorno |  |  |  | 
+ |  | operativo previsto? |  |  |  | 
+ |  | ¿Se difunde información sobre la |  |  |  | 
+ |  | tecnología a la comunidad de |  |  |  | 
+ |  | usuarios? |  |  |  | 
+ | ¿La tecnología es adoptada por
+la comunidad de usuarios? |  |  |  |  | 
+
+La evidencia incluye resultados del sistema
+probado en un entorno operativo o misión
+real.
+
+NIVEL
+9
+
+¿La tecnología es adoptada por
+la comunidad de usuarios?
+
+12.
+USO DE LOS RESULTADOS DE LAS EVALUACIONES DE TRL
+Una vez determinado el nivel de madurez tecnológica y si nos encontramos en
+un nivel TRL 4, donde sabemos que la tecnología funciona es momento de buscar el
+apoyo de instituciones o empresas que nos faciliten llegar al mercado.
+El avance de la madurez demostrada de una tecnología, como lo demuestra
+el logro de un TRL más alto, puede desencadenar una inversión adicional en
+recursos, escalando esta inversión de acuerdo con la preparación de la tecnología.
+Algunos ven los TRL como un camino de la ciencia a la tecnología comercializable,
+a través de una serie de artefactos físicos cada vez más complejos como
+encarnaciones de la tecnología. Una evaluación útil de la preparación tecnológica
+sigue un proceso repetible, se basa en evidencia suficiente y da como resultado un
+resultado creíble que es útil para todas las partes involucradas, incluidos los
+directores de proyectos, los desarrolladores de tecnología y los órganos de gobierno.
+13. TRANSFERENCIA DE LA TECNOLOGÍA
+Los investigadores han sido motivados a transferir su conocimiento a empresas
+con la capacidad instalada suficiente para llevar su tecnología al mercado. Una
+empresa a través de diversas herramientas evalúa la factibilidad de adquirir una
+tecnología, siendo la escala TRL, una de las principales fuentes para la toma de
+decisiones pues permite identificar el estado de desarrollo de la tecnología que se
+va a transferir y evaluar los riesgos y la incertidumbre de la transacción entre las
+partes.
+Es importante señalar que mientras más alto sea el TRL de una tecnología se
+considera que los riesgos y la incertidumbre para su comercialización es menor y
+podría ser de mayor interés para una empresa.
+Para la transferencia de tecnología y lograr el interés de licenciatarios
+potenciales se requiere que se demuestre que la tecnología funciona, es decir, que
+la tecnología se encuentre al menos en un TRL 4.
+14. FINANCIAMIENTO
+Existen diversos programas de financiamiento públicos y privados que utilizan
+como herramienta de selección la escala TRL. En México en gran medida se ha
+implementado en diversas convocatorias.
+Av. Faro # 2350 piso 4-M Colonia Verde Valle CP 44550
+Guadalajara, Jalisco Tel.: (33) 12535611 /12/ 13
+
+A nivel regional, el Fondo de Innovación Tecnológica (FIT), del Consejo
+Nacional de Ciencia Y Tecnología (CONACYT) y la Secretaría de Economía (SE),
+desde 2015 hacen uso de esta escala para medir las etapas de maduración
+tecnológica de programas o proyectos. Así como los programas estatales en Jalisco
+apoyados por la Secretaría de Innovación, Ciencia y Tecnología (SICYT) y el
+COECYTJAL, como los son: PROINNJAL, FODECIJAL, “De la Ciencia al Mercado”, así
+como la procuración de fondos internacionales.
+15.
+EJEMPLOS PRÁCTICOS
+Como se mencionó en el marco teórico, existen diversas versiones de la
+escala TRL original desarrollada por la NASA, dependiendo del tipo de tecnología.
+Sin embargo, estos comparten de forma general la siguiente estructura y conceptos
+que es útil para poder identificar rápidamente el estado de desarrollo que tiene una
+tecnología:
+TRL 1: Idea básica.
+TRL 2: Concepto o tecnología formulados.
+TRL 3: Prueba de concepto.
+TRL 4: Validación a nivel de componentes en laboratorio.
+TRL 5: Validación a nivel de componentes en un entorno relevante.
+TRL 6: Validación de sistema o subsistema en un entorno relevante.
+TRL 7: Validación de sistema en un entorno real.
+TRL 8: Validación y certificación completa en un entorno real.
+TRL 9: Pruebas con éxito en entorno real.
+A continuación, se proporcionan dos ejemplos prácticos desarrollados por el
+CONACYT para evaluar tecnologías relacionadas con software y vacunas
+biotecnológicas.
+16. DESARROLLO DE SOFTWARE
+En el desarrollo de software también se aplica el nivel de madurez
+tecnológica. Es importante considerar que, cuando un software es parte de otro
+desarrollo tecnológico se debe hacer el mismo análisis de TRL antes de introducirlo
+en el equipo donde va a estar operando. En la siguiente tabla se muestra un
+ejemplo práctico de la evaluación TRL para proyectos de desarrollo de software.
+Av. Faro # 2350 piso 4-M Colonia Verde Valle CP 44550
+Guadalajara, Jalisco Tel.: (33) 12535611 /12/ 13
+
+TRL 1: Idea básica.
+TRL 2: Concepto o tecnología formulados.
+TRL 3: Prueba de concepto.
+TRL 4: Validación a nivel de componentes en laboratorio.
+TRL 5: Validación a nivel de componentes en un entorno relevante.
+TRL 6: Validación de sistema o subsistema en un entorno relevante.
+TRL 7: Validación de sistema en un entorno real.
+TRL 8: Validación y certificación completa en un entorno real.
+TRL 9: Pruebas con éxito en entorno real.
+
+Nivel más bajo de la disponibilidad de la tecnología software. Se está
+investigando un nuevo dominio software por parte de la comunidad
+científica a nivel de investigación básica. Este nivel comprende el
+TRL 1
+desarrollo de los usos básicos así como las propiedades básicas de la
+arquitectura del software, las formulaciones matemáticas y los
+algoritmos.
+Se comienza a investigar las aplicaciones prácticas del nuevo software
+TRL 2
+aunque las posibles aplicaciones son todavía especulativas.
+Se comienza una actividad intensa de I+D y se comienza a demostrar la
+TRL 3 viabilidad del nuevo software a través de estudios analíticos y de
+laboratorio.
+Se comienzan a integrar los diferentes componentes del software básico
+TRL 4
+para demostrar que pueden funcionar conjuntamente.
+En este nivel la nueva tecnología del software se encuentra preparada
+para integrarse en sistemas existentes y los algoritmos pueden ejecutarse
+TRL 5
+en procesadores con características similares a las de un entorno
+operativo.
+En este nivel se pasaría de las implementaciones a nivel de prototipo de
+TRL 6
+laboratorio a implementaciones completas en entornos reales.
+En este nivel la tecnología del software está preparada para su
+TRL 7
+demostración y prueba con sistemas operativos.
+En este nivel todas las funcionalidades del nuevo software se encuentran
+TRL 8
+simuladas y probadas en escenarios reales.
+En este nivel la nueva tecnología del software se encuentra totalmente
+TRL 9
+disponible y se puede utilizar en cualquier entorno real.
+17. DESARROLLO DE UN VACUNA BIOTECNOLÓGICA
+Asimismo, se presenta un ejemplo práctico para la evaluación de TRL a una
+vacuna, específicamente en el área biotecnológica.
+TRL 1 Mantener una vigilancia técnica científica.
+TRL 2 Ideas de investigación y protocolos en desarrollo.
+TRL 3 Prueba de hipótesis y la prueba inicial de concepto (PoC) es
+demostrada en un número limitado in vitro e in vivo.
+TRL 4 PoC y seguridad biológica de un candidato o la construcción de la
+vacuna que se demuestra en un modelo de laboratorio o en animal
+definido.
+TRL 5 Estudios preclínicos siguiendo buenas prácticas de laboratorio,
+suficiente para soportar solicitudes de Investigación de Nueva Droga
+(IDN).
+TRL 6 Fase 1 de pruebas clínicas que apoyen a proceder a la fase 2 de
+pruebas clínicas. Solicitudes IDN presentadas y revisada por el Center
+for Biologics Evaluation and Research (CBER) de la FDA (U.S. Food and
+Drug Administration).
+Av. Faro # 2350 piso 4-M Colonia Verde Valle CP 44550
+Guadalajara, Jalisco Tel.: (33) 12535611 /12/ 13
+
+TRL 1 |  | Nivel más bajo de la disponibilidad de la tecnología software. Se está | 
+ |  | investigando un nuevo dominio software por parte de la comunidad | 
+ |  | científica a nivel de investigación básica. Este nivel comprende el | 
+ |  | desarrollo de los usos básicos así como las propiedades básicas de la | 
+ |  | arquitectura del software, las formulaciones matemáticas y los | 
+ |  | algoritmos. | 
+TRL 2 |  | Se comienza a investigar las aplicaciones prácticas del nuevo software | 
+ |  | aunque las posibles aplicaciones son todavía especulativas. | 
+TRL 3 |  | Se comienza una actividad intensa de I+D y se comienza a demostrar la | 
+ |  | viabilidad del nuevo software a través de estudios analíticos y de | 
+ |  | laboratorio. | 
+TRL 4 |  | Se comienzan a integrar los diferentes componentes del software básico | 
+ |  | para demostrar que pueden funcionar conjuntamente. | 
+TRL 5 |  | En este nivel la nueva tecnología del software se encuentra preparada | 
+ |  | para integrarse en sistemas existentes y los algoritmos pueden ejecutarse | 
+ |  | en procesadores con características similares a las de un entorno | 
+ |  | operativo. | 
+TRL 6 |  | En este nivel se pasaría de las implementaciones a nivel de prototipo de | 
+ |  | laboratorio a implementaciones completas en entornos reales. | 
+TRL 7 |  | En este nivel la tecnología del software está preparada para su | 
+ |  | demostración y prueba con sistemas operativos. | 
+TRL 8 |  | En este nivel todas las funcionalidades del nuevo software se encuentran | 
+ |  | simuladas y probadas en escenarios reales. | 
+TRL 9 |  | En este nivel la nueva tecnología del software se encuentra totalmente | 
+ |  | disponible y se puede utilizar en cualquier entorno real. | 
+
+ | TRL 1 |  |  | Mantener una vigilancia técnica científica. | 
+ | TRL 2 |  | I | deas de investigación y protocolos en desarrollo. | 
+TRL 3 | TRL 3 |  |  | Prueba de hipótesis y la prueba inicial de concepto (PoC) es | 
+ |  |  |  | demostrada en un número limitado in vitro e in vivo. | 
+TRL 4 |  |  |  | PoC y seguridad biológica de un candidato o la construcción de la | 
+ |  |  |  | vacuna que se demuestra en un modelo de laboratorio o en animal | 
+ |  |  |  | definido. | 
+TRL 5 |  |  |  | Estudios preclínicos siguiendo buenas prácticas de laboratorio, | 
+ |  |  |  | suficiente para soportar solicitudes de Investigación de Nueva Droga | 
+ |  |  |  | (IDN). | 
+TRL 6 |  |  |  | Fase 1 de pruebas clínicas que apoyen a proceder a la fase 2 de | 
+ |  |  |  | pruebas clínicas. Solicitudes IDN presentadas y revisada por el Center | 
+ |  |  |  | for Biologics Evaluation and Research (CBER) de la FDA (U.S. Food and | 
+ |  |  |  | Drug Administration). | 
+
+TRL 7 Fase 2 de prueba clínica completada. Fase 3 de plan de ensayo clínico
+es aprobada por el CBER de la FDA.
+TRL 8 Fase 3 de prueba clínica completada. El CBER de la FDA aprueba la
+solicitud de la Licencia Biológica (BLA).
+TRL 9 Publicación de estudios de mercado y de control.
+18. DESARROLLO DE PRODUCTOS EN EL SECTOR AGROINDUSTRIAL.
+Adicionalmente, se presenta un ejemplo práctico para la evaluación de TRL a
+productos agroindustriales que proporciona una forma de coordinar la investigación
+y monitorear el progreso para cadenas de valor completas desde el campo hasta el
+mercado.
+Establecer el desafío al que se enfrentan la industria u otros usuarios y la
+TRL 1 necesidad de un nuevo tipo de innovación, como variedad, práctica u
+otra solución tecnológica.
+Estimar el valor de la solución innovadora en comparación con la
+TRL 2 variedad, práctica u otras tecnologías existentes, y dónde encaja la
+solución en la cadena de suministro general.
+Examinar la solución innovadora, identificando el rasgo o probando
+TRL 3 otro tipo de innovación tecnológica de interés para demostrar su valor
+agregado potencial.
+Realizar pruebas de campo u otros experimentos de desempeño
+tecnológico para determinar el rendimiento potencial, la calidad del
+TRL 4
+producto, la eficiencia operativa, los costos y los retornos o las mejoras
+en la calidad de los recursos que resultarían de la innovación.
+Realizar pruebas de producción a escala de campo u otras
+evaluaciones de tecnología en el sitio para determinar los costos de
+TRL 5
+producción reales, el uso de recursos, el potencial del mercado u otras
+limitaciones técnicas, incluida la aceptación del mercado.
+Producción de materiales de plantación certificados u otros tipos de
+TRL 6 tecnologías y asegúrese de que estén disponibles para uso comercial y
+puedan obtenerse para la producción a gran escala.
+La producción a escala comercial por parte de productores o
+fabricantes ocurre con la entrega de productos a los productores,
+TRL 7 manipuladores, procesadores, distribuidores u otros participantes de la
+cadena de suministro a los puntos de venta del mercado y para
+satisfacer la demanda de los usuarios.
+Monitorear e investigar continuamente a nivel del sistema para mejorar
+el sistema de producción o la aplicación de tecnología mientras se
+TRL 8
+administran múltiples preocupaciones de recursos naturales y humanos
+en todas las cadenas de suministro.
+Se encuentra disponible una gama completa de servicios del sector
+público y privado para respaldar la producción, el manejo, la
+TRL 9
+distribución y los mercados a nivel del sistema en todas las cadenas de
+suministro.
+Av. Faro # 2350 piso 4-M Colonia Verde Valle CP 44550
+Guadalajara, Jalisco Tel.: (33) 12535611 /12/ 13
+
+TRL 7 |  |  |  | Fase 2 de prueba clínica completada. Fase 3 de plan de ensayo clínico | 
+ |  |  |  | es aprobada por el CBER de la FDA. | 
+TRL 8 |  |  |  | Fase 3 de prueba clínica completada. El CBER de la FDA aprueba la | 
+ |  |  |  | solicitud de la Licencia Biológica (BLA). | 
+ | TRL 9 |  |  | Publicación de estudios de mercado y de control. | 
+
+TRL 1 |  | Establecer el desafío al que se enfrentan la industria u otros usuarios y la | 
+ |  | necesidad de un nuevo tipo de innovación, como variedad, práctica u | 
+ |  | otra solución tecnológica. | 
+TRL 2 |  | Estimar el valor de la solución innovadora en comparación con la | 
+ |  | variedad, práctica u otras tecnologías existentes, y dónde encaja la | 
+ |  | solución en la cadena de suministro general. | 
+TRL 3 |  | Examinar la solución innovadora, identificando el rasgo o probando | 
+ |  | otro tipo de innovación tecnológica de interés para demostrar su valor | 
+ |  | agregado potencial. | 
+TRL 4 |  | Realizar pruebas de campo u otros experimentos de desempeño | 
+ |  | tecnológico para determinar el rendimiento potencial, la calidad del | 
+ |  | producto, la eficiencia operativa, los costos y los retornos o las mejoras | 
+ |  | en la calidad de los recursos que resultarían de la innovación. | 
+TRL 5 |  | Realizar pruebas de producción a escala de campo u otras | 
+ |  | evaluaciones de tecnología en el sitio para determinar los costos de | 
+ |  | producción reales, el uso de recursos, el potencial del mercado u otras | 
+ |  | limitaciones técnicas, incluida la aceptación del mercado. | 
+TRL 6 |  | Producción de materiales de plantación certificados u otros tipos de | 
+ |  | tecnologías y asegúrese de que estén disponibles para uso comercial y | 
+ |  | puedan obtenerse para la producción a gran escala. | 
+TRL 7 |  | La producción a escala comercial por parte de productores o | 
+ |  | fabricantes ocurre con la entrega de productos a los productores, | 
+ |  | manipuladores, procesadores, distribuidores u otros participantes de la | 
+ |  | cadena de suministro a los puntos de venta del mercado y para | 
+ |  | satisfacer la demanda de los usuarios. | 
+TRL 8 |  | Monitorear e investigar continuamente a nivel del sistema para mejorar | 
+ |  | el sistema de producción o la aplicación de tecnología mientras se | 
+ |  | administran múltiples preocupaciones de recursos naturales y humanos | 
+ |  | en todas las cadenas de suministro. | 
+TRL 9 |  | Se encuentra disponible una gama completa de servicios del sector | 
+ |  | público y privado para respaldar la producción, el manejo, la | 
+ |  | distribución y los mercados a nivel del sistema en todas las cadenas de | 
+ |  | suministro. | 
+
+19.
+FUENTES CONSULTADAS
+• CONACYT (2015) “Etapas de maduración tecnológica, según metodología
+"Technology Readiness Level" de la NASA”. Consultado el 08 de agosto de 2021 en:
+https://www.mincotur.gob.es/Publicaciones/Publicacionesperiodicas/EconomiaIndust
+rial/RevistaEconomiaIndustrial/393/NOTAS.pdf
+• NASA (2012) “Technology Readiness Level” Consultado el 08 de octubre de 2021 en:
+https://www.nasa.gov/directorates/heo/scan/engineering/technology/txt_accordion
+1.html
+• U.S. Department of Energy (2015) “Technology Readiness Assessment Guide”
+Consultado en internet el 08 de octubre de 2021 en:
+https://www.directives.doe.gov/directives-documents/400-series/0413.3-EGuide-
+04/@@images/file
+• U.S. Federal Highway Administration (2017) “Technology Readiness Levels Guidebook”.
+Consultado en internet el 08 de octubre de 2021 en: https://trid.trb.org/view/1492897
+• United State Department of Agriculture. (2018). Crop Research Technology Readiness
+Level (TRL). Consultado en internet el 15 de diciembre de 2021 en:
+https://nifa.usda.gov/sites/default/files/resources/Crop-Research-Technology-
+Readiness-Level-2018.pdf
+Av. Faro # 2350 piso 4-M Colonia Verde Valle CP 44550
+Guadalajara, Jalisco Tel.: (33) 12535611 /12/ 13
+

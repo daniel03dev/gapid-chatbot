@@ -1,5 +1,5 @@
 import axios, { AxiosInstance, AxiosError } from 'axios';
-import { Conversation, Message, ChatResponse } from '@/types/index';
+import { Conversation, Message, ChatResponse } from '../types/index';
 
 /**
  * Servicio API para comunicación con el backend Django.
@@ -141,6 +141,28 @@ export const messageAPI = {
       return response.data;
     } catch (error) {
       console.error('Error creating message:', error);
+      throw error;
+    }
+  },
+
+  /**
+   * Enviar un mensaje y obtener respuesta del chatbot RAG
+   */
+  async chat(
+    conversationId: number,
+    message: string
+  ): Promise<ChatResponse> {
+    try {
+      const response = await apiClient.post<ChatResponse>(
+        '/chat/',
+        {
+          message,
+          conversation_id: conversationId || undefined,
+        }
+      );
+      return response.data;
+    } catch (error) {
+      console.error('Error in chat:', error);
       throw error;
     }
   },

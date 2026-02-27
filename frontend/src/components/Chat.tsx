@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Message, Conversation } from '@/types/index';
-import { conversationAPI, messageAPI } from '@/services/api';
+import { Message, Conversation } from '../types/index';
+import { conversationAPI, messageAPI } from '../services/api';
 import ChatMessage from './ChatMessage';
 import ChatInput from './ChatInput';
-import styles from '@/styles/Chat.module.css';
+import styles from '../styles/Chat.module.css';
 
 /**
  * Componente principal de Chat.
@@ -56,34 +56,47 @@ const Chat: React.FC = () => {
    * Enviar un mensaje del usuario
    */
   const handleSendMessage = async (content: string) => {
-    if (!conversation || !content.trim()) return;
+    if (!content.trim()) return;
 
     try {
       setIsLoading(true);
       setError(null);
 
-      // Crear mensaje del usuario
-      const userMessage = await messageAPI.create(
-        conversation.id,
-        'user',
-        content
-      );
+      // Crear conversación si no existe
+      if (!conversation) {
+        const newConversation = await conversationAPI.create();
+        setConversation(newConversation);
+      }
+
+      // Crear mensaje del usuario en la UI
+      const userMessage: Message = {
+        id: Math.random(),
+        role: 'user',
+        role_display: 'Tú',
+        content: content,
+        created_at: new Date().toISOString(),
+      };
       setMessages((prev) => [...prev, userMessage]);
 
-      // Simular respuesta del asistente (placeholder)
-      // En el futuro, esto llamará al endpoint de ChatService
-      setTimeout(async () => {
-        const assistantMessage = await messageAPI.create(
-          conversation.id,
-          'assistant',
-          'Esta es una respuesta temporal. En breve integraremos el sistema RAG completo para responder basándose en los documentos del GAPID.'
-        );
-        setMessages((prev) => [...prev, assistantMessage]);
-        setIsLoading(false);
-      }, 1000);
+      // Enviar mensaje al backend y obtener respuesta
+      const response = await messageAPI.chat(
+        conversation?.id || 0,
+        content
+      );
+
+      // Agregar respuesta del asistente
+      const assistantMessage: Message = {
+        id: Math.random(),
+        role: 'assistant',
+        role_display: 'Asistente',
+        content: response.answer,
+        created_at: new Date().toISOString(),
+      };
+      setMessages((prev) => [...prev, assistantMessage]);
+      setIsLoading(false);
     } catch (err) {
-      setError('Error al enviar el mensaje');
-      console.error(err);
+      setError(`Error al enviar el mensaje: ${err instanceof Error ? err.message : 'Error desconocido'}`);
+      console.error('Chat error:', err);
       setIsLoading(false);
     }
   };

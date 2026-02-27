@@ -6,7 +6,8 @@ ENV PYTHONUNBUFFERED=1
 WORKDIR /app
 
 COPY requirements.txt /app/
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --default-timeout=1000 --retries 10 --index-url https://download.pytorch.org/whl/cpu torch
+RUN pip install --default-timeout=1000 --retries 10 --no-cache-dir -r requirements.txt
 
 COPY . /app/
 

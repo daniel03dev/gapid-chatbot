@@ -1,5 +1,5 @@
 import React, { useState, KeyboardEvent } from 'react';
-import styles from '@/styles/Chat.module.css';
+import styles from '../styles/Chat.module.css';
 
 interface ChatInputProps {
   onSendMessage: (message: string) => void;

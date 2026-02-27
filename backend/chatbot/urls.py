@@ -7,6 +7,9 @@ urlpatterns = [
     # Health check
     path('status/', views.health_check, name='health-check'),
     
+    # Chat endpoint
+    path('chat/', views.chat_view, name='chat'),
+    
     # Conversaciones
     path('conversations/', views.ConversationListCreateView.as_view(), name='conversation-list-create'),
     path('conversations/<int:pk>/', views.ConversationDetailView.as_view(), name='conversation-detail'),

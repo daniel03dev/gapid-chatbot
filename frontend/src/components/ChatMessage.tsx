@@ -1,6 +1,6 @@
 import React from 'react';
-import { Message } from '@/types/index';
-import styles from '@/styles/Chat.module.css';
+import { Message } from '../types/index';
+import styles from '../styles/Chat.module.css';
 
 interface ChatMessageProps {
   message: Message;

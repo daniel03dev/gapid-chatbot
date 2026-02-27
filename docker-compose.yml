@@ -9,6 +9,7 @@ services:
       POSTGRES_PASSWORD: gapid_password
     volumes:
       - postgres_data:/var/lib/postgresql/data
+      - ./init-db.sql:/docker-entrypoint-initdb.d/01-init.sql
     ports:
       - "5432:5432"
     networks:
@@ -61,7 +62,7 @@ services:
       - /app/node_modules
       - /app/.next
     ports:
-      - "3000:3000"
+      - "3333:3000"
     environment:
       - NEXT_PUBLIC_API_URL=http://localhost:8000/api
     depends_on:

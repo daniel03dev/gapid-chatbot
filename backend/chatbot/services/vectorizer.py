@@ -28,7 +28,10 @@ class VectorizerService:
             raise ImportError("Instala: pip install sentence-transformers faiss-cpu")
         
         self.model_name = model_name
-        self.model = SentenceTransformer(model_name)
+        # Forzar CPU para evitar problemas con meta tensors
+        import os
+        os.environ["CUDA_VISIBLE_DEVICES"] = ""
+        self.model = SentenceTransformer(model_name, device="cpu")
         self.index = None
         self.chunks = []
         self.embedding_dim = self.model.get_sentence_embedding_dimension()

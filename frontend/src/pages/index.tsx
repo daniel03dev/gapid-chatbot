@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import Chat from '@/components/Chat';
+import Chat from '../components/Chat';
 
 /**
  * Página principal del frontend.

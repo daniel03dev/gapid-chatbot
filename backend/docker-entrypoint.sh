@@ -6,11 +6,21 @@ echo "🔧 Iniciando entrypoint de Django..."
 # Esperar a que PostgreSQL esté listo (si está disponible)
 if [ -n "$DB_HOST" ]; then
     echo "⏳ Esperando a PostgreSQL en $DB_HOST:$DB_PORT..."
-    while ! nc -z "$DB_HOST" "$DB_PORT" 2>/dev/null; do
-        echo "   Reintentando..."
+    # Usar timeout + /dev/tcp en lugar de nc (que podría no estar instalado)
+    timeout=30
+    while [ $timeout -gt 0 ]; do
+        if python3 -c "import socket; socket.create_connection(('$DB_HOST', $DB_PORT), timeout=2)" 2>/dev/null; then
+            echo "✓ PostgreSQL está listo"
+            break
+        fi
+        echo "   Reintentando... ($timeout segundos restantes)"
         sleep 1
+        timeout=$((timeout - 1))
     done
-    echo "✓ PostgreSQL está listo"
+    
+    if [ $timeout -le 0 ]; then
+        echo "⚠️  Timeout esperando PostgreSQL, continuando de todas formas..."
+    fi
 fi
 
 # Ejecutar migraciones
