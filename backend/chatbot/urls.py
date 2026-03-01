@@ -16,4 +16,12 @@ urlpatterns = [
     
     # Mensajes dentro de una conversación
     path('conversations/<int:conversation_id>/messages/', views.MessageListCreateView.as_view(), name='message-list-create'),
+    
+    # Logs y trazabilidad
+    path('logs/queries/', views.query_logs_view, name='query-logs'),
+    path('logs/queries/<int:log_id>/', views.query_log_detail_view, name='query-log-detail'),
+    path('logs/audit/', views.audit_logs_view, name='audit-logs'),
+    
+    # Métricas y estadísticas
+    path('metrics/', views.metrics_view, name='metrics'),
 ]

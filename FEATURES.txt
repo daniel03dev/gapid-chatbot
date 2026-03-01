@@ -1,0 +1,446 @@
+================================================================================
+GAPID CHATBOT - REGISTRO DE FUNCIONALIDADES
+================================================================================
+Última actualización: 28 de febrero de 2026 - 21:45 (Dashboard de Métricas)
+
+================================================================================
+INFRAESTRUCTURA Y ARQUITECTURA
+================================================================================
+
+✅ Docker Compose
+   - Contenedor PostgreSQL 14-alpine (base de datos)
+   - Contenedor Django backend (API REST)
+   - Contenedor Next.js frontend (interfaz de usuario)
+   - Volúmenes persistentes para datos y vectores
+   - Redes internas para comunicación entre servicios
+
+✅ Base de Datos PostgreSQL
+   - Script de inicialización (init-db.sql)
+   - Usuario y base de datos gapid_db
+   - Migraciones automáticas de Django
+
+================================================================================
+BACKEND (Django 5.1.0)
+================================================================================
+
+MODELOS DE DATOS
+-----------------
+✅ Conversation
+   - ID autogenerado
+   - Timestamps de creación y actualización
+   - Relación con mensajes
+
+✅ Message
+   - Roles: user/assistant
+   - Contenido del mensaje
+   - Relación con conversación
+   - Timestamps
+
+✅ QueryLog (NUEVO - 28/02/2026)
+   - Registro de cada consulta del usuario
+   - Respuesta del asistente
+   - Tiempo de respuesta en segundos
+   - Cantidad de chunks recuperados
+   - Contexto completo usado del índice vectorial
+   - IP del cliente
+   - User-agent del navegador
+   - Timestamp de la consulta
+   - Campo para feedback opcional (1-5)
+
+✅ AuditLog (NUEVO - 28/02/2026)
+   - Eventos del sistema (query, index_build, error, config_change, startup)
+   - Niveles de severidad (info, warning, error, critical)
+   - Descripción del evento
+   - Metadata adicional en JSON
+   - IP y user-agent
+   - Timestamp del evento
+
+SERVICIOS RAG (Retrieval-Augmented Generation)
+-----------------------------------------------
+✅ DocumentProcessor
+   - Procesamiento de archivos .txt
+   - Chunking de documentos (500 caracteres, overlap 100)
+   - Extracción de metadata (nombre archivo, chunk ID)
+
+✅ VectorizerService
+   - Modelo: paraphrase-multilingual-MiniLM-L12-v2
+   - Embeddings de 384 dimensiones
+   - Índice FAISS para búsqueda vectorial
+   - Optimizado para CPU
+   - Persistencia en disco (faiss_index.bin, chunks.pkl)
+
+✅ ChatService
+   - Construcción de índice vectorial
+   - Búsqueda de contexto relevante (top-k)
+   - Generación de respuestas basadas en documentos
+   - Sistema de logging automático (NUEVO)
+   - Registro de eventos de auditoría (NUEVO)
+   - Cálculo de tiempo de respuesta (NUEVO)
+   - Extracción de IP y user-agent (NUEVO)
+
+ENDPOINTS API
+-------------
+✅ GET /api/status/
+   - Health check del sistema
+
+✅ POST /api/chat/
+   - Procesar consulta del usuario
+   - Crear conversación si no existe
+   - Guardar mensajes (user + assistant)
+   - Retornar respuesta con fuentes
+   - LOGGING AUTOMÁTICO ACTIVADO (NUEVO)
+   - Incluye response_time y chunks_retrieved (NUEVO)
+
+✅ GET /api/conversations/
+   - Listar todas las conversaciones
+   - Incluye contador de mensajes
+
+✅ POST /api/conversations/
+   - Crear nueva conversación
+
+✅ GET /api/conversations/<id>/
+   - Detalle de conversación con todos sus mensajes
+
+✅ GET /api/conversations/<id>/messages/
+   - Listar mensajes de una conversación
+
+✅ POST /api/conversations/<id>/messages/
+   - Crear nuevo mensaje en una conversación
+
+✅ GET /api/logs/queries/ (NUEVO - 28/02/2026)
+   - Listar consultas registradas
+   - Filtros: limit, conversation_id
+   - Preview de consultas y respuestas
+
+✅ GET /api/logs/queries/<id>/ (NUEVO - 28/02/2026)
+   - Detalle completo de una consulta
+   - Incluye contexto completo usado
+
+✅ GET /api/logs/audit/ (NUEVO - 28/02/2026)
+   - Listar eventos de auditoría
+   - Filtros: limit, event_type, severity
+
+✅ GET /api/metrics/ (NUEVO - 28/02/2026)
+   - Total de consultas y conversaciones
+   - Tiempo promedio de respuesta
+   - Chunks promedio recuperados
+   - Consultas en últimas 24h, 7d, 30d
+   - Promedio de feedback (si existe)
+   - Total de errores
+   - Horas más activas del sistema
+
+CONFIGURACIÓN
+-------------
+✅ CORS configurado
+   - Orígenes permitidos: localhost:3000, 3001, 3333
+   - Credenciales habilitadas
+   - django-cors-headers 4.3.1
+
+✅ Django REST Framework
+   - Serializers para todos los modelos
+   - Permisos AllowAny (desarrollo)
+
+✅ Panel de Administración Django
+   - Gestión de conversaciones
+   - Gestión de mensajes
+   - Gestión de QueryLog (NUEVO)
+   - Gestión de AuditLog (NUEVO)
+
+================================================================================
+FRONTEND (Next.js 14.1.0 + React 18.3.0 + TypeScript)
+================================================================================
+
+COMPONENTES
+-----------
+✅ Chat.tsx
+   - Componente principal del chat
+   - Manejo de estado de conversación
+   - Envío de mensajes con API
+   - Visualización de respuestas
+
+✅ ChatInput.tsx
+   - Input para escribir mensajes
+   - Botón de envío
+   - Manejo de eventos del teclado
+
+✅ ChatMessage.tsx
+   - Renderizado de mensajes individuales
+   - Diferenciación user/assistant
+   - Estilos según rol
+
+✅ MetricsCard.tsx (NUEVO - 28/02/2026)
+   - Componente reutilizable para métricas
+   - Soporta iconos y tendencias (↑↓→)
+   - Animaciones hover
+   - Diseño responsivo
+
+✅ QueryLogTable.tsx (NUEVO - 28/02/2026)
+   - Tabla de consultas registradas
+   - Columnas: ID, consulta, respuesta, tiempo, chunks, fecha, rating
+   - Formato de fechas localizado
+   - Tooltips en textos largos
+   - Botón de ver detalle
+
+PÁGINAS
+-------
+✅ index.tsx (/)
+   - Página principal con componente Chat
+   - Botón flotante para acceder a métricas
+
+✅ metrics.tsx (/metrics) (NUEVO - 28/02/2026)
+   - Dashboard completo de estadísticas
+   - 4 secciones principales:
+     * Métricas Generales (total consultas, conversaciones, tiempo promedio)
+     * Actividad Reciente (últimas 24h, 7d, 30d, errores)
+     * Horas Más Activas (gráfico de barras)
+     * Calificación de Usuarios (promedio de feedback)
+   - Tabla de últimas 20 consultas
+   - Botón de actualizar datos
+   - Navegación de regreso al chat
+
+SERVICIOS API
+-------------
+✅ api.ts
+   - Cliente Axios configurado
+   - baseURL apuntando al backend
+   - Métodos para:
+     * Crear conversación
+     * Obtener conversación
+     * Enviar mensaje al chat
+     * Listar conversaciones
+     * Obtener métricas del sistema (NUEVO)
+     * Listar query logs con filtros (NUEVO)
+     * Obtener detalle de query log (NUEVO)
+   - Interfaces TypeScript:
+     * Metrics (NUEVO)
+     * QueryLog (NUEVO)
+     * QueryLogDetail (NUEVO)
+     * QueryLogsResponse (NUEVO)
+
+ESTILOS
+-------
+✅ CSS Modules
+   - Chat.module.css
+   - ChatMessage.module.css  
+   - ChatInput.module.css
+   - Home.module.css (NUEVO - botón métricas)
+   - MetricsCard.module.css (NUEVO)
+   - QueryLogTable.module.css (NUEVO)
+   - Metrics.module.css (NUEVO - dashboard completo)
+   - globals.css
+   - Declaraciones TypeScript para CSS
+
+CONFIGURACIÓN
+-------------
+✅ TypeScript configurado
+   - tsconfig.json
+   - Tipos personalizados en src/types/
+   - Module declarations para CSS
+
+✅ Puerto 3333
+   - Configurado en docker-compose.yml
+   - Evita conflictos con otros servicios
+
+================================================================================
+DOCUMENTOS INDEXADOS
+================================================================================
+
+✅ Índice Vectorial FAISS
+   - 983 chunks totales
+   - 3 documentos fuente:
+     * goc-2025-o13.txt (141 chunks)
+     * Guia TRL.txt (109 chunks)
+     * Manual SPP libro_Final_120325.txt (733 chunks)
+
+✅ Documentos sobre GAPID (Sistema Cubano)
+   - Gestión de Actividades de Proyectos de I+D+i
+   - Gobierno Organizacional Corporativo (GOC)
+   - Guía de niveles de madurez tecnológica (TRL)
+   - Manual del Sistema de Programas y Proyectos (SPP)
+
+================================================================================
+SISTEMA DE TRAZABILIDAD Y AUDITORÍA (28/02/2026)
+================================================================================
+
+CARACTERÍSTICAS
+---------------
+✅ Logging Automático de Consultas
+   - Cada consulta se registra automáticamente en QueryLog
+   - Incluye pregunta, respuesta, tiempo, chunks usados
+   - Guarda contexto completo para auditoría posterior
+   - Captura IP y user-agent del cliente
+
+✅ Registro de Eventos del Sistema
+   - Método estático para logging de eventos
+   - Categorías: query, index_build, error, config_change, startup
+   - Niveles de severidad configurables
+   - Metadata adicional en formato JSON
+
+✅ Métricas y Estadísticas
+================================================================================
+DASHBOARD DE MÉTRICAS (28/02/2026 - NUEVO)
+================================================================================
+
+CARACTERÍSTICAS
+---------------
+✅ Página Completa de Métricas (/metrics)
+   - Interfaz limpia y moderna con gradiente purpura
+   - Responsive design para todos los dispositivos
+   - Actualización automática de datos
+
+✅ Secciones del Dashboard
+
+   1. Métricas Generales
+      - Total de consultas procesadas
+      - Total de conversaciones
+      - Tiempo promedio de respuesta
+      - Chunks promedio recuperados
+      
+   2. Actividad Reciente
+      - Consultas en últimas 24 horas
+      - Consultas en últimos 7 días
+      - Consultas en últimos 30 días
+      - Total de errores del sistema
+      - Indicadores de tendencia (↑↓→)
+      
+   3. Horas Más Activas
+      - Gráfico de barras con horas del día
+      - Cantidad de consultas por hora
+      - Visualización de patrones de uso
+      
+   4. Calificación de Usuarios (si disponible)
+      - Promedio de feedback 1-5
+      - Visualización con estrellas
+      
+   5. Tabla de Consultas Recientes
+      - Últimas 20 consultas registradas
+      - Columnas: ID, consulta (preview), respuesta (preview), 
+                  tiempo respuesta, chunks, fecha, rating
+      - Timestamps en formato local
+
+✅ Interfaz de Usuario
+   - Botón "📊 Ver Métricas" en esquina superior derecha del chat
+   - Botón "Actualizar" en header del dashboard
+   - Botón "← Volver al Chat" en dashboard
+   - Loading spinner mientras se cargan datos
+   - Manejo de errores con opción de reintentar
+   - Animaciones suaves en transiciones
+   - Hover effects en cards y botones
+
+✅ Funcionalidades
+   - Carga asincrónica de datos
+   - Actualización manual con botón refresh
+   - Formato de números localizado (español)
+   - Formato de fechas localizado
+   - Formateo de tiempos de respuesta (ms → segundos)
+   - Manejo robusto de errores
+
+BENEFICIOS PARA LA TESIS
+------------------------
+✅ Visualización clara de datos del sistema
+✅ Evidencia gráfica de funcionamiento
+✅ Análisis de patrones de uso
+✅ Métricas de rendimiento documentadas
+✅ Datos para capítulos de resultados
+
+================================================================================
+TRAZABILIDAD Y AUDITORÍA (28/02/2026)
+================================================================================
+
+CARACTERÍSTICAS
+---------------
+✅ Logging Automático de Consultas
+   - Cada consulta se registra automáticamente en QueryLog
+   - Incluye pregunta, respuesta, tiempo, chunks usados
+   - Guarda contexto completo para auditoría posterior
+   - Captura IP y user-agent del cliente
+
+✅ Registro de Eventos del Sistema
+   - Método estático para logging de eventos
+   - Categorías: query, index_build, error, config_change, startup
+   - Niveles de severidad configurables
+   - Metadata adicional en formato JSON
+
+✅ Métricas Agregadas
+   - Endpoint /api/metrics/ con estadísticas en tiempo real
+   - Análisis de tendencias (últimas 24h, 7d, 30d)
+   - Identificación de horas pico
+   - Cálculo de promedios y totales
+
+BENEFICIOS PARA LA TESIS
+------------------------
+✅ Medición de uso real del sistema
+✅ Datos para análisis de rendimiento
+✅ Evidencia de funcionamiento
+✅ Base para mejoras futuras
+✅ Cumplimiento de requisitos de auditoría
+
+================================================================================
+PENDIENTES / FUTURAS MEJORAS
+================================================================================
+
+⏳ Testing
+   - Tests unitarios (backend con pytest)
+   - Tests de integración
+   - Tests del frontend (Jest/React Testing Library)
+
+⏳ Mejoras de UX
+   - Historial de conversaciones en sidebar
+   - Exportar conversaciones (PDF/TXT)
+   - Indicador "escribiendo..."
+   - Sistema de feedback (rating 1-5 estrellas)
+   - Mejor manejo visual de errores
+
+⏳ Mejoras del Dashboard
+   - Gráficos más avanzados (Chart.js, Recharts)
+   - Filtros por rango de fechas
+   - Exportación de reportes (PDF)
+   - Comparativas período-a-período
+
+⏳ Optimización de Rendimiento
+   - Caché de respuestas frecuentes
+   - Rate limiting
+   - Paginación optimizada
+   - Compresión de respuestas
+
+⏳ Documentación
+   - README completo con capturas de pantalla
+   - Guía de instalación detallada
+   - Documentación de API (OpenAPI/Swagger)
+   - Manual de usuario
+
+⏳ Seguridad
+   - Autenticación de usuarios
+   - Permisos granulares
+   - Sanitización de inputs
+   - HTTPS en producción
+
+⏳ Dashboard de Métricas (Frontend)
+   - Visualización de estadísticas
+   - Gráficos de uso
+   - Reportes exportables
+
+================================================================================
+NOTAS DE DESARROLLO
+================================================================================
+
+Versiones:
+- Python: 3.11
+- Django: 5.1.0
+- PostgreSQL: 14-alpine
+- Next.js: 14.1.0
+- React: 18.3.0
+- Node.js: 20-alpine
+
+Repositorio Git:
+- Owner: daniel03dev
+- Repo: gapid-chatbot
+- Branch: main
+
+Último commit significativo:
+- feat: Sistema RAG funcional con documentos GAPID indexados (3d12d0f)
+- feat: Sistema de trazabilidad y auditoría implementado (pendiente commit)
+
+================================================================================
+FIN DEL REGISTRO
+================================================================================

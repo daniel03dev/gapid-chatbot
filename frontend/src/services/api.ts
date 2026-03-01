@@ -212,4 +212,95 @@ export const healthAPI = {
   },
 };
 
+/**
+ * MÉTRICAS Y LOGS
+ */
+
+export interface Metrics {
+  total_queries: number;
+  total_conversations: number;
+  avg_response_time: number;
+  avg_chunks_retrieved: number;
+  queries_last_24h: number;
+  queries_last_7d: number;
+  queries_last_30d: number;
+  avg_feedback_score: number | null;
+  total_errors: number;
+  most_active_hours: Array<{ hour: number; count: number }>;
+}
+
+export interface QueryLog {
+  id: number;
+  conversation_id: number | null;
+  query_preview: string;
+  response_preview: string;
+  response_time: number;
+  chunks_retrieved: number;
+  created_at: string;
+  feedback_score: number | null;
+}
+
+export interface QueryLogDetail {
+  id: number;
+  conversation_id: number | null;
+  user_query: string;
+  assistant_response: string;
+  response_time: number;
+  chunks_retrieved: number;
+  context_used: string;
+  created_at: string;
+  ip_address: string | null;
+  user_agent: string;
+  feedback_score: number | null;
+}
+
+export interface QueryLogsResponse {
+  count: number;
+  results: QueryLog[];
+}
+
+export const metricsAPI = {
+  /**
+   * Obtener métricas y estadísticas del sistema
+   */
+  async getMetrics(): Promise<Metrics> {
+    try {
+      const response = await apiClient.get<Metrics>('/metrics/');
+      return response.data;
+    } catch (error) {
+      console.error('Error fetching metrics:', error);
+      throw error;
+    }
+  },
+
+  /**
+   * Listar consultas registradas
+   */
+  async listQueryLogs(limit: number = 50, conversationId?: number): Promise<QueryLogsResponse> {
+    try {
+      const params: any = { limit };
+      if (conversationId) params.conversation_id = conversationId;
+      
+      const response = await apiClient.get<QueryLogsResponse>('/logs/queries/', { params });
+      return response.data;
+    } catch (error) {
+      console.error('Error fetching query logs:', error);
+      throw error;
+    }
+  },
+
+  /**
+   * Obtener detalle de una consulta específica
+   */
+  async getQueryLogDetail(logId: number): Promise<QueryLogDetail> {
+    try {
+      const response = await apiClient.get<QueryLogDetail>(`/logs/queries/${logId}/`);
+      return response.data;
+    } catch (error) {
+      console.error('Error fetching query log detail:', error);
+      throw error;
+    }
+  },
+};
+
 export default apiClient;
