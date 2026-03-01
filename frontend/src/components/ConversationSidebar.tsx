@@ -21,6 +21,7 @@ const ConversationSidebar: React.FC<ConversationSidebarProps> = ({
   const [conversations, setConversations] = useState<Conversation[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
+  const [searchTerm, setSearchTerm] = useState<string>('');
 
   const loadConversations = async () => {
     try {
@@ -79,6 +80,14 @@ const ConversationSidebar: React.FC<ConversationSidebarProps> = ({
     return 'Conversación vacía';
   };
 
+  const filteredConversations = conversations.filter((conv) => {
+    const searchLower = searchTerm.toLowerCase();
+    const preview = getConversationPreview(conv).toLowerCase();
+    const idMatch = conv.id.toString().includes(searchLower);
+    const previewMatch = preview.includes(searchLower);
+    return idMatch || previewMatch;
+  });
+
   return (
     <>
       {/* Toggle button para móvil */}
@@ -112,6 +121,25 @@ const ConversationSidebar: React.FC<ConversationSidebarProps> = ({
           + Nueva Conversación
         </button>
 
+        <div className={styles.searchContainer}>
+          <input
+            type="text"
+            placeholder="🔍 Buscar conversaciones..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className={styles.searchInput}
+          />
+          {searchTerm && (
+            <button
+              className={styles.clearButton}
+              onClick={() => setSearchTerm('')}
+              title="Limpiar búsqueda"
+            >
+              ✕
+            </button>
+          )}
+        </div>
+
         <div className={styles.listContainer}>
           {loading && (
             <div className={styles.loadingState}>
@@ -138,9 +166,15 @@ const ConversationSidebar: React.FC<ConversationSidebarProps> = ({
             </div>
           )}
 
-          {!loading && !error && conversations.length > 0 && (
+          {!loading && !error && conversations.length > 0 && filteredConversations.length === 0 && (
+            <div className={styles.emptyState}>
+              <p>No se encontraron resultados</p>
+            </div>
+          )}
+
+          {!loading && !error && filteredConversations.length > 0 && (
             <ul className={styles.list}>
-              {conversations.map((conversation) => (
+              {filteredConversations.map((conversation) => (
                 <li
                   key={conversation.id}
                   className={`${styles.item} ${
@@ -175,7 +209,10 @@ const ConversationSidebar: React.FC<ConversationSidebarProps> = ({
 
         <div className={styles.footer}>
           <small>
-            Total: {conversations.length} conversaciones
+            {searchTerm 
+              ? `${filteredConversations.length} de ${conversations.length} resultados`
+              : `Total: ${conversations.length} conversaciones`
+            }
           </small>
         </div>
       </aside>

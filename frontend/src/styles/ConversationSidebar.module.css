@@ -91,6 +91,50 @@
   box-shadow: 0 4px 8px rgba(102, 126, 234, 0.3);
 }
 
+.searchContainer {
+  position: relative;
+  margin: 0 1rem 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 0.625rem 0.75rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  outline: none;
+  transition: all 0.2s;
+  background: #f9fafb;
+}
+
+.searchInput:focus {
+  background: white;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.searchInput::placeholder {
+  color: #d1d5db;
+}
+
+.clearButton {
+  position: absolute;
+  right: 0.5rem;
+  background: none;
+  border: none;
+  font-size: 1rem;
+  color: #9ca3af;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  transition: color 0.2s;
+}
+
+.clearButton:hover {
+  color: #6b7280;
+}
+
 .listContainer {
   flex: 1;
   overflow-y: auto;
