@@ -22,6 +22,8 @@ const ConversationSidebar: React.FC<ConversationSidebarProps> = ({
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState<string>('');
+  const [deleteConfirm, setDeleteConfirm] = useState<number | null>(null);
+  const [deleting, setDeleting] = useState<boolean>(false);
 
   const loadConversations = async () => {
     try {
@@ -87,6 +89,40 @@ const ConversationSidebar: React.FC<ConversationSidebarProps> = ({
     const previewMatch = preview.includes(searchLower);
     return idMatch || previewMatch;
   });
+
+  const handleDeleteClick = (e: React.MouseEvent, conversationId: number) => {
+    e.stopPropagation();
+    setDeleteConfirm(conversationId);
+  };
+
+  const handleDeleteConfirm = async () => {
+    if (!deleteConfirm) return;
+    
+    try {
+      setDeleting(true);
+      await conversationAPI.delete(deleteConfirm);
+      
+      // Remove from list
+      setConversations(conversations.filter(c => c.id !== deleteConfirm));
+      
+      // Close modal
+      setDeleteConfirm(null);
+      
+      // If deleted current conversation, notify parent
+      if (deleteConfirm === currentConversationId) {
+        onNewConversation();
+      }
+    } catch (err: any) {
+      console.error('Error deleting conversation:', err);
+      alert('Error al eliminar la conversación');
+    } finally {
+      setDeleting(false);
+    }
+  };
+
+  const handleDeleteCancel = () => {
+    setDeleteConfirm(null);
+  };
 
   return (
     <>
@@ -200,6 +236,13 @@ const ConversationSidebar: React.FC<ConversationSidebarProps> = ({
                         {formatDate(conversation.updated_at)}
                       </div>
                     </div>
+                    <button
+                      className={styles.deleteButton}
+                      onClick={(e) => handleDeleteClick(e, conversation.id)}
+                      title="Eliminar conversación"
+                    >
+                      ✕
+                    </button>
                   </button>
                 </li>
               ))}
@@ -216,6 +259,34 @@ const ConversationSidebar: React.FC<ConversationSidebarProps> = ({
           </small>
         </div>
       </aside>
+
+      {/* Modal de confirmación */}
+      {deleteConfirm && (
+        <div className={styles.modalOverlay} onClick={handleDeleteCancel}>
+          <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
+            <h3 className={styles.modalTitle}>¿Eliminar conversación?</h3>
+            <p className={styles.modalText}>
+              Esta acción no se puede deshacer. Se eliminará la conversación #{deleteConfirm} y todos sus mensajes.
+            </p>
+            <div className={styles.modalButtons}>
+              <button
+                className={styles.modalCancelButton}
+                onClick={handleDeleteCancel}
+                disabled={deleting}
+              >
+                Cancelar
+              </button>
+              <button
+                className={styles.modalDeleteButton}
+                onClick={handleDeleteConfirm}
+                disabled={deleting}
+              >
+                {deleting ? 'Eliminando...' : 'Eliminar'}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 };
