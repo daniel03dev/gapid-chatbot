@@ -3,6 +3,7 @@ import { Message, Conversation } from '../types/index';
 import { conversationAPI, messageAPI } from '../services/api';
 import ChatMessage from './ChatMessage';
 import ChatInput from './ChatInput';
+import ConversationSidebar from './ConversationSidebar';
 import styles from '../styles/Chat.module.css';
 
 /**
@@ -14,6 +15,7 @@ const Chat: React.FC = () => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   /**
@@ -44,8 +46,27 @@ const Chat: React.FC = () => {
       setConversation(newConversation);
       setMessages([]);
       setError(null);
+      setSidebarOpen(false);
     } catch (err) {
       setError('Error al inicializar la conversación');
+      console.error(err);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  /**
+   * Cargar una conversación existente
+   */
+  const handleLoadConversation = async (conversationId: number) => {
+    try {
+      setIsLoading(true);
+      const loadedConversation = await conversationAPI.get(conversationId);
+      setConversation(loadedConversation);
+      setMessages(loadedConversation.messages || []);
+      setError(null);
+    } catch (err) {
+      setError('Error al cargar la conversación');
       console.error(err);
     } finally {
       setIsLoading(false);
@@ -109,56 +130,72 @@ const Chat: React.FC = () => {
   };
 
   return (
-    <div className={styles.chatContainer}>
-      <div className={styles.chatHeader}>
-        <h1>GAPID Chatbot</h1>
-        <p>Asistente conversacional para el Sistema de Programas y Proyectos</p>
-        <button 
-          onClick={handleClearConversation}
-          className={styles.clearButton}
-          disabled={isLoading}
-        >
-          Nueva Conversación
-        </button>
-      </div>
-
-      <div className={styles.messagesContainer}>
-        {messages.length === 0 && (
-          <div className={styles.welcomeMessage}>
-            <h2>¡Bienvenido!</h2>
-            <p>
-              Pregúntame sobre el Sistema de Programas y Proyectos de CTI,
-              niveles de madurez tecnológica (TRL), o cualquier tema relacionado
-              con GAPID.
-            </p>
-          </div>
-        )}
-
-        {messages.map((message) => (
-          <ChatMessage key={message.id} message={message} />
-        ))}
-
-        {isLoading && (
-          <div className={styles.loadingIndicator}>
-            <span>●</span>
-            <span>●</span>
-            <span>●</span>
-          </div>
-        )}
-
-        {error && (
-          <div className={styles.errorMessage}>
-            ⚠️ {error}
-          </div>
-        )}
-
-        <div ref={messagesEndRef} />
-      </div>
-
-      <ChatInput 
-        onSendMessage={handleSendMessage}
-        disabled={isLoading || !conversation}
+    <div className={styles.chatWrapper}>
+      <ConversationSidebar
+        currentConversationId={conversation?.id}
+        onSelectConversation={handleLoadConversation}
+        onNewConversation={initializeConversation}
+        isOpen={sidebarOpen}
+        onToggle={() => setSidebarOpen(!sidebarOpen)}
       />
+
+      <div className={styles.chatContainer}>
+        <div className={styles.chatHeader}>
+          <div className={styles.headerContent}>
+            <h1>GAPID Chatbot</h1>
+            <p>Asistente conversacional para el Sistema de Programas y Proyectos</p>
+          </div>
+          <button 
+            onClick={() => initializeConversation()}
+            className={styles.clearButton}
+            disabled={isLoading}
+            title="Crear nueva conversación"
+          >
+            + Nueva
+          </button>
+        </div>
+
+        <div className={styles.messagesContainer}>
+          {messages.length === 0 && (
+            <div className={styles.welcomeMessage}>
+              <h2>¡Bienvenido!</h2>
+              <p>
+                Pregúntame sobre el Sistema de Programas y Proyectos de CTI,
+                niveles de madurez tecnológica (TRL), o cualquier tema relacionado
+                con GAPID.
+              </p>
+              <p className={styles.tip}>
+                💡 Usa el botón "☰ Historial" para ver tus conversaciones anteriores
+              </p>
+            </div>
+          )}
+
+          {messages.map((message) => (
+            <ChatMessage key={message.id} message={message} />
+          ))}
+
+          {isLoading && (
+            <div className={styles.loadingIndicator}>
+              <span>●</span>
+              <span>●</span>
+              <span>●</span>
+            </div>
+          )}
+
+          {error && (
+            <div className={styles.errorMessage}>
+              ⚠️ {error}
+            </div>
+          )}
+
+          <div ref={messagesEndRef} />
+        </div>
+
+        <ChatInput 
+          onSendMessage={handleSendMessage}
+          disabled={isLoading || !conversation}
+        />
+      </div>
     </div>
   );
 };
