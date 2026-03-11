@@ -4,6 +4,9 @@ Integra procesamiento de documentos, vectorización y lógica de respuesta.
 """
 
 import time
+import re
+import unicodedata
+from pathlib import Path
 from typing import List, Tuple, Optional
 from .document_processor import DocumentProcessor
 from .vectorizer import VectorizerService
@@ -86,36 +89,238 @@ class ChatService:
             return []
         
         return self.vectorizer.search(query, k=k)
+
+    @staticmethod
+    def _normalize_text(text: str) -> str:
+        return re.sub(r"\s+", " ", text).strip()
+
+    @staticmethod
+    def _simplify_for_match(text: str) -> str:
+        normalized = ChatService._normalize_text(text)
+        normalized = re.sub(r"^\d+(?:\.\d+)*\.?\s*", "", normalized)
+        normalized = normalized.strip("¿? ")
+        normalized = unicodedata.normalize("NFKD", normalized)
+        normalized = "".join(char for char in normalized if not unicodedata.combining(char))
+        return normalized.lower()
+
+    @staticmethod
+    def _tokenize(text: str) -> List[str]:
+        words = re.findall(r"[a-zA-ZáéíóúñÁÉÍÓÚÑ0-9]+", text.lower())
+        stopwords = {
+            "el", "la", "los", "las", "un", "una", "unos", "unas", "de", "del", "al",
+            "y", "o", "u", "en", "por", "para", "con", "sin", "que", "se", "es", "son",
+            "como", "qué", "que", "cual", "cuál", "cuando", "cuándo", "donde", "dónde",
+            "a", "ante", "bajo", "cabe", "contra", "desde", "durante", "entre", "hacia",
+            "hasta", "mediante", "según", "segun", "sobre", "tras", "su", "sus", "tu", "tus"
+        }
+        return [word for word in words if len(word) > 2 and word not in stopwords]
+
+    @staticmethod
+    def _repair_mojibake(text: str) -> str:
+        if not text:
+            return text
+
+        if not re.search(r"Ã.|Â.|â€|â€™|â€œ|â€", text):
+            return text
+
+        for source_encoding in ("latin-1", "cp1252"):
+            try:
+                repaired = text.encode(source_encoding).decode("utf-8")
+                if repaired.count("Ã") < text.count("Ã"):
+                    return repaired
+            except Exception:
+                continue
+
+        return text
+
+    def _load_source_document(self, source_name: str) -> str:
+        try:
+            document_path = Path(self.documents_dir) / source_name
+            if not document_path.exists():
+                return ""
+            return self.processor._read_text_with_fallback(document_path)
+        except Exception:
+            return ""
+
+    def _looks_like_heading(self, line: str) -> bool:
+        clean = self._normalize_text(line)
+        if not clean:
+            return False
+
+        if re.match(r"^\d+(\.\d+)*\.?\s+", clean):
+            return True
+
+        if clean.endswith("?"):
+            return True
+
+        if clean.isupper() and len(clean.split()) <= 12:
+            return True
+
+        return False
+
+    def _cleanup_explanation(self, text: str, query: str) -> str:
+        explanation = self._normalize_text(self._repair_mojibake(text))
+        if not explanation:
+            return ""
+
+        sentences = [
+            self._normalize_text(sentence)
+            for sentence in re.split(r"(?<=[.!?])\s+", explanation)
+            if self._normalize_text(sentence)
+        ]
+
+        filtered = []
+        seen = set()
+        query_lower = query.lower()
+        query_tokens = set(self._tokenize(query))
+
+        for sentence in sentences:
+            sentence_lower = sentence.lower()
+
+            if re.match(r"^[A-Z]{2,6}\s*\([^\)]*\)\s*:\s*", sentence):
+                if "trl" not in sentence_lower:
+                    continue
+
+            sentence_tokens = set(self._tokenize(sentence))
+            if query_tokens and filtered:
+                overlap = len(sentence_tokens.intersection(query_tokens))
+                if overlap == 0 and len(sentence) < 80:
+                    continue
+
+            key = sentence_lower.strip(" .")
+            if key in seen:
+                continue
+
+            redundant = False
+            for kept in filtered:
+                kept_key = kept.lower().strip(" .")
+                if key in kept_key or kept_key in key:
+                    redundant = True
+                    break
+
+            if redundant:
+                continue
+
+            seen.add(key)
+            filtered.append(sentence)
+
+            if len(" ".join(filtered)) >= 650:
+                break
+
+        explanation = " ".join(filtered) if filtered else explanation
+
+        if not re.search(r"[.!?]$", explanation):
+            last_complete_sentence = re.search(r"^(.*[.!?])\s+[^.!?]*$", explanation)
+            if last_complete_sentence:
+                explanation = last_complete_sentence.group(1).strip()
+            else:
+                explanation = explanation.rstrip(" ,;:") + "."
+
+        return self._repair_mojibake(explanation)
+
+    def _extract_section_passage(self, query: str, source_name: str) -> str:
+        document_text = self._load_source_document(source_name)
+        if not document_text:
+            return ""
+
+        lines = document_text.splitlines()
+        query_clean = self._simplify_for_match(query)
+
+        def should_skip_line(line: str) -> bool:
+            clean = self._normalize_text(line)
+            if not clean:
+                return True
+            if "." in clean and clean.count(".") >= 10:
+                return True
+            if clean in {"1.", "2.", "3.", "4.", "5.", "6.", "7.", "8.", "9."}:
+                return True
+            if "Av. Faro" in clean or "Guadalajara, Jalisco" in clean or "Tel.:" in clean:
+                return True
+            return False
+
+        for index, line in enumerate(lines):
+            clean_line = self._normalize_text(line)
+            if self._simplify_for_match(clean_line) != query_clean:
+                continue
+
+            collected = []
+            for next_line in lines[index + 1:]:
+                if should_skip_line(next_line):
+                    if collected and len(" ".join(collected)) >= 220:
+                        break
+                    continue
+
+                if collected and self._looks_like_heading(next_line):
+                    break
+
+                collected.append(self._normalize_text(next_line))
+
+                if len(" ".join(collected)) >= 700:
+                    break
+
+            passage = self._cleanup_explanation(" ".join(collected), query)
+            if passage:
+                return passage
+
+        return ""
+
+    def _extract_chunk_passage(self, query: str, context_chunks: List[dict], source_name: str) -> str:
+        query_tokens = set(self._tokenize(query))
+        candidate_sentences = []
+
+        for chunk in context_chunks:
+            if chunk.get("source") != source_name:
+                continue
+
+            text = self._repair_mojibake(chunk.get("text", ""))
+            text = re.sub(r"\s*\|\s*", "\n", text)
+
+            for raw_sentence in re.split(r"(?<=[.!?])\s+|\n+", text):
+                sentence = self._normalize_text(raw_sentence)
+                if not sentence or self._looks_like_heading(sentence):
+                    continue
+
+                tokens = set(self._tokenize(sentence))
+                overlap = len(tokens.intersection(query_tokens))
+                if overlap == 0 and candidate_sentences:
+                    continue
+
+                score = overlap * 10 - abs(len(sentence) - 180) / 30
+                candidate_sentences.append((score, sentence))
+
+        candidate_sentences.sort(key=lambda item: item[0], reverse=True)
+        explanation = " ".join(sentence for _, sentence in candidate_sentences[:4])
+        return self._cleanup_explanation(explanation, query)
     
-    def generate_response(self, query: str, context_chunks: List[dict]) -> str:
+    def generate_response(self, query: str, context_chunks: List[dict]) -> Tuple[str, Optional[str]]:
         """
         Genera una respuesta basada en el contexto.
-        (Implementación simple - puede extenderse con LLMs)
+        Busca un bloque coherente en el documento fuente y devuelve una respuesta
+        natural, breve y útil para el usuario.
         
         Args:
             query: Pregunta del usuario.
             context_chunks: Chunks relevantes.
-            
+
         Returns:
-            Respuesta del asistente.
+            Tupla con (respuesta del asistente, fuente principal sugerida).
         """
         if not context_chunks:
-            return "No encontré información relevante para responder tu pregunta."
-        
-        # Extraer texto de chunks
-        context_text = "\n\n".join([
-            f"[Fuente: {chunk['source']}]\n{chunk['text']}"
-            for chunk in context_chunks
-        ])
-        
-        # Respuesta simple (puede reemplazarse con LLM real)
-        response = f"""Basándome en los documentos disponibles:
+            return "No encontré información relevante para responder tu pregunta.", None
 
-{context_text}
+        primary_source = context_chunks[0].get("source", "Documento sin nombre")
 
-Para una respuesta completa y detallada, por favor consulta la documentación oficial del GAPID."""
-        
-        return response
+        explanation = self._extract_section_passage(query, primary_source)
+        if not explanation:
+            explanation = self._extract_chunk_passage(query, context_chunks, primary_source)
+
+        if not explanation:
+            return (
+                f"No encontré información suficiente para responder de forma precisa.\n\nFuente sugerida: {primary_source}.",
+                primary_source,
+            )
+
+        return f"{explanation}\n\nFuente sugerida: {primary_source}.", primary_source
     
     def answer_question(self, query: str, k: int = 3, log_to_db: bool = False, 
                        conversation_id: Optional[int] = None,
@@ -148,10 +353,10 @@ Para una respuesta completa y detallada, por favor consulta la documentación of
         context_chunks = [chunk for chunk, _ in results]
         
         # Generar respuesta
-        answer = self.generate_response(query, context_chunks)
-        
-        # Recopilar fuentes
-        sources = list(set([chunk['source'] for chunk in context_chunks]))
+        answer, main_source = self.generate_response(query, context_chunks)
+
+        # Recopilar solo la fuente principal sugerida
+        sources = [main_source] if main_source else []
         
         # Calcular tiempo de respuesta
         response_time = time.time() - start_time

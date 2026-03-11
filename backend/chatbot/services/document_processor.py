@@ -4,6 +4,7 @@ Carga archivos .txt, los divide en chunks y los prepara para vectorización.
 """
 
 import os
+import re
 from pathlib import Path
 from typing import List, Tuple
 
@@ -42,14 +43,52 @@ class DocumentProcessor:
         
         for txt_file in txt_files:
             try:
-                with open(txt_file, "r", encoding="utf-8") as f:
-                    content = f.read()
+                content = self._read_text_with_fallback(txt_file)
                 documents.append((txt_file.name, content))
                 print(f"✓ Cargado: {txt_file.name} ({len(content)} caracteres)")
             except Exception as e:
                 print(f"✗ Error cargando {txt_file.name}: {e}")
         
         return documents
+
+    @staticmethod
+    def _repair_mojibake(text: str) -> str:
+        """Intenta reparar texto con mojibake común (ej. 'tecnologÃ­a')."""
+        if not text:
+            return text
+
+        # Heurística: si aparecen patrones típicos de mojibake UTF-8->latin1/cp1252
+        if not re.search(r"Ã.|Â.|â€|â€™|â€œ|â€", text):
+            return text
+
+        for source_encoding in ("latin-1", "cp1252"):
+            try:
+                repaired = text.encode(source_encoding).decode("utf-8")
+                if repaired.count("Ã") < text.count("Ã"):
+                    return repaired
+            except Exception:
+                continue
+
+        return text
+
+    def _read_text_with_fallback(self, file_path: Path) -> str:
+        """Lee archivo de texto intentando varios encodings y repara mojibake."""
+        encodings = ("utf-8", "utf-8-sig", "cp1252", "latin-1")
+        last_error = None
+
+        for encoding in encodings:
+            try:
+                with open(file_path, "r", encoding=encoding) as file_obj:
+                    text = file_obj.read()
+                return self._repair_mojibake(text)
+            except UnicodeDecodeError as error:
+                last_error = error
+                continue
+
+        if last_error:
+            raise last_error
+
+        raise ValueError(f"No se pudo leer el archivo: {file_path}")
     
     def chunk_document(self, content: str, document_name: str) -> List[dict]:
         """
