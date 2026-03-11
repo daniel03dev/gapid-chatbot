@@ -1,7 +1,7 @@
 ================================================================================
 GAPID CHATBOT - REGISTRO DE FUNCIONALIDADES
 ================================================================================
-Última actualización: 28 de febrero de 2026 - 21:45 (Dashboard de Métricas)
+Última actualización: 28 de febrero de 2026 - 22:15 (Historial de Conversaciones)
 
 ================================================================================
 INFRAESTRUCTURA Y ARQUITECTURA
@@ -168,6 +168,18 @@ COMPONENTES
    - Diferenciación user/assistant
    - Estilos según rol
 
+✅ ConversationSidebar.tsx (NUEVO - 28/02/2026)
+   - Lista de conversaciones pasadas
+   - Carga dinámica desde backend
+   - Click para cargar conversación anterior
+   - Botón para crear nueva conversación
+   - Formato de fecha relativa
+   - Preview del último mensaje
+   - Estados: loading, error, empty
+   - Responsive: sidebar desktop, botón flotante móvil
+   - Ordenamiento por más reciente primero
+   - Total de conversaciones mostrado
+
 ✅ MetricsCard.tsx (NUEVO - 28/02/2026)
    - Componente reutilizable para métricas
    - Soporta iconos y tendencias (↑↓→)
@@ -185,7 +197,9 @@ PÁGINAS
 -------
 ✅ index.tsx (/)
    - Página principal con componente Chat
+   - Integración de sidebar de historial
    - Botón flotante para acceder a métricas
+   - Manejo de conversaciones pasadas
 
 ✅ metrics.tsx (/metrics) (NUEVO - 28/02/2026)
    - Dashboard completo de estadísticas
