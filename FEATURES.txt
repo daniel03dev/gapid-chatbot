@@ -1,7 +1,7 @@
 ================================================================================
 GAPID CHATBOT - REGISTRO DE FUNCIONALIDADES
 ================================================================================
-Última actualización: 28 de febrero de 2026 - 22:15 (Historial de Conversaciones)
+Última actualización: 10 de marzo de 2026 - 23:55 (Respuestas RAG + ajustes finales)
 
 ================================================================================
 INFRAESTRUCTURA Y ARQUITECTURA
@@ -73,6 +73,10 @@ SERVICIOS RAG (Retrieval-Augmented Generation)
    - Construcción de índice vectorial
    - Búsqueda de contexto relevante (top-k)
    - Generación de respuestas basadas en documentos
+   - Extracción de pasajes coherentes desde la fuente principal
+   - Priorización de una sola fuente sugerida por respuesta
+   - Limpieza de texto para evitar fragmentos truncados
+   - Normalización de encabezados numerados para mejor matching
    - Sistema de logging automático (NUEVO)
    - Registro de eventos de auditoría (NUEVO)
    - Cálculo de tiempo de respuesta (NUEVO)
@@ -87,7 +91,8 @@ ENDPOINTS API
    - Procesar consulta del usuario
    - Crear conversación si no existe
    - Guardar mensajes (user + assistant)
-   - Retornar respuesta con fuentes
+   - Retornar respuesta con fuente principal sugerida
+   - Respuesta más natural y contextual (evita "copia y pega" de chunks)
    - LOGGING AUTOMÁTICO ACTIVADO (NUEVO)
    - Incluye response_time y chunks_retrieved (NUEVO)
 
@@ -173,6 +178,8 @@ COMPONENTES
    - Carga dinámica desde backend
    - Click para cargar conversación anterior
    - Botón para crear nueva conversación
+   - Búsqueda por texto en tiempo real
+   - Eliminación de conversación con confirmación
    - Formato de fecha relativa
    - Preview del último mensaje
    - Estados: loading, error, empty
@@ -251,9 +258,23 @@ CONFIGURACIÓN
    - Tipos personalizados en src/types/
    - Module declarations para CSS
 
-✅ Puerto 3333
+✅ Puerto 3000
    - Configurado en docker-compose.yml
-   - Evita conflictos con otros servicios
+   - Ajustado por conflicto de puertos reservados en Windows
+
+================================================================================
+ACTUALIZACIONES RECIENTES (10/03/2026)
+================================================================================
+
+✅ Calidad de respuesta del chatbot mejorada
+   - Se eliminó la estrategia de concatenar chunks textuales sin cohesión
+   - Se prioriza el pasaje explicativo más relevante del documento fuente
+   - Se corrige la detección de encabezados con numeración (ej. "3. ¿Qué es ...?")
+   - Se mantiene trazabilidad con "Fuente sugerida" en cada respuesta
+
+✅ Robustez de lectura documental
+   - Fallback de encodings en `DocumentProcessor` (utf-8, utf-8-sig, cp1252, latin-1)
+   - Reparación de mojibake en lecturas históricas de documentos
 
 ================================================================================
 DOCUMENTOS INDEXADOS
@@ -399,7 +420,6 @@ PENDIENTES / FUTURAS MEJORAS
    - Tests del frontend (Jest/React Testing Library)
 
 ⏳ Mejoras de UX
-   - Historial de conversaciones en sidebar
    - Exportar conversaciones (PDF/TXT)
    - Indicador "escribiendo..."
    - Sistema de feedback (rating 1-5 estrellas)
@@ -430,9 +450,8 @@ PENDIENTES / FUTURAS MEJORAS
    - HTTPS en producción
 
 ⏳ Dashboard de Métricas (Frontend)
-   - Visualización de estadísticas
-   - Gráficos de uso
-   - Reportes exportables
+   - Gráficos más avanzados y filtros temporales
+   - Exportación de reportes de uso
 
 ================================================================================
 NOTAS DE DESARROLLO
@@ -451,9 +470,9 @@ Repositorio Git:
 - Repo: gapid-chatbot
 - Branch: main
 
-Último commit significativo:
-- feat: Sistema RAG funcional con documentos GAPID indexados (3d12d0f)
-- feat: Sistema de trazabilidad y auditoría implementado (pendiente commit)
+Últimos commits significativos:
+- fix: mejorar respuestas fundamentadas del chatbot (8e26457)
+- chore: actualizar documentacion y acceso local (dd34860)
 
 ================================================================================
 FIN DEL REGISTRO
