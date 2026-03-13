@@ -25,7 +25,13 @@ El sistema responderá consultas basándose en:
 
 🚧 **En desarrollo inicial** - Día 1: Estructura del proyecto
 
+## 🚀 Despliegue
+
+Para instrucciones detalladas de instalación y despliegue del sistema, consulta:
+
+👉 [**Guía de Instalación y Despliegue**](docs/INSTALACION.md)
+
 ## 📄 Licencia
 
-Proyecto académico - Universidad de La Habana
+Proyecto académico - Universidad de Ciencias Informáticas
 Tesis de Grado - 2026
