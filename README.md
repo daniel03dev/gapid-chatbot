@@ -1,6 +1,6 @@
 # Sistema Conversacional Inteligente para GAPID
 
-Sistema de chatbot conversacional para apoyo a usuarios del Sistema de Programas y Proyectos de Ciencia, Tecnología e Innovación (GAPID) de Cuba.
+Sistema de chatbot conversacional para apoyo a usuarios de la Plataforma para la Gestión Administrativa del Sistema de Programas y Proyectos (GAPID) de Cuba.
 
 ## 🎯 Objetivo
 

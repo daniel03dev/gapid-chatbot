@@ -2,7 +2,7 @@
 
 ## 🎯 Visión General
 
-GAPID Chatbot es un sistema conversacional inteligente basado en **Recuperación de Información Aumentada (RAG)** que facilita el acceso a información sobre el Sistema de Programas y Proyectos de Ciencia, Tecnología e Innovación de Cuba.
+GAPID Chatbot es un sistema conversacional inteligente basado en **Recuperación de Información Aumentada (RAG)** que facilita el acceso a información sobre la Plataforma para la Gestión Administrativa del Sistema de Programas y Proyectos (GAPID) de Cuba.
 
 ## 🏗️ Componentes Principales
 
