@@ -433,7 +433,7 @@ API: http://localhost:8000/api/
 ## 🎓 Para la Tesis
 
 Este checklist demuestra:
-1. **Metodología Ágil**: Desarrollo incremental en 14 sprints diarios
+1. **Metodología AUP UCI**: Desarrollo iterativo e incremental por iteraciones
 2. **Arquitectura Robusta**: Sistema RAG completo con 3 capas
 3. **DevOps Profesional**: Containerización y orquestación
 4. **Full-Stack Development**: Backend Python, Frontend TypeScript, Infrastructure
