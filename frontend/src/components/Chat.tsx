@@ -143,7 +143,7 @@ const Chat: React.FC = () => {
         <div className={styles.chatHeader}>
           <div className={styles.headerContent}>
             <h1>GAPID Chatbot</h1>
-            <p>Asistente conversacional para la Plataforma GAPID</p>
+            <p>Asistente conversacional para los usuarios de GAPID</p>
           </div>
           <button 
             onClick={() => initializeConversation()}
