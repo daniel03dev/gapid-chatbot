@@ -143,7 +143,7 @@ const Chat: React.FC = () => {
         <div className={styles.chatHeader}>
           <div className={styles.headerContent}>
             <h1>GAPID Chatbot</h1>
-            <p>Asistente conversacional para el Sistema de Programas y Proyectos</p>
+            <p>Asistente conversacional para la Plataforma GAPID</p>
           </div>
           <button 
             onClick={() => initializeConversation()}
@@ -160,9 +160,9 @@ const Chat: React.FC = () => {
             <div className={styles.welcomeMessage}>
               <h2>¡Bienvenido!</h2>
               <p>
-                Pregúntame sobre el Sistema de Programas y Proyectos de CTI,
+                Pregúntame sobre la Plataforma GAPID,
                 niveles de madurez tecnológica (TRL), o cualquier tema relacionado
-                con GAPID.
+                con su gestión administrativa y normativa.
               </p>
               <p className={styles.tip}>
                 💡 Usa el botón "☰ Historial" para ver tus conversaciones anteriores

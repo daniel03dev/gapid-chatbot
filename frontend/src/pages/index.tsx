@@ -14,7 +14,7 @@ export default function Home() {
         <title>GAPID Chatbot - Sistema Conversacional Inteligente</title>
         <meta
           name="description"
-          content="Asistente conversacional para el Sistema de Programas y Proyectos de Ciencia, Tecnología e Innovación (GAPID) de Cuba"
+          content="Asistente conversacional para la Plataforma GAPID de Cuba, orientado a la consulta normativa y la gestión administrativa"
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
