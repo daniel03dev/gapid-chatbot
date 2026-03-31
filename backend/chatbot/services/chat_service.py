@@ -120,18 +120,33 @@ class ChatService:
         if not text:
             return text
 
-        if not re.search(r"Ã.|Â.|â€|â€™|â€œ|â€", text):
+        def mojibake_score(value: str) -> int:
+            return len(re.findall(r"Ã.|Â.|â€|â€™|â€œ|â€|�", value))
+
+        if mojibake_score(text) == 0:
             return text
 
-        for source_encoding in ("latin-1", "cp1252"):
-            try:
-                repaired = text.encode(source_encoding).decode("utf-8")
-                if repaired.count("Ã") < text.count("Ã"):
-                    return repaired
-            except Exception:
-                continue
+        best = text
+        best_score = mojibake_score(text)
 
-        return text
+        for _ in range(2):
+            improved = False
+            for source_encoding in ("latin-1", "cp1252"):
+                try:
+                    candidate = best.encode(source_encoding).decode("utf-8")
+                except Exception:
+                    continue
+
+                candidate_score = mojibake_score(candidate)
+                if candidate_score < best_score:
+                    best = candidate
+                    best_score = candidate_score
+                    improved = True
+
+            if not improved:
+                break
+
+        return best
 
     def _load_source_document(self, source_name: str) -> str:
         try:
@@ -354,6 +369,7 @@ class ChatService:
         
         # Generar respuesta
         answer, main_source = self.generate_response(query, context_chunks)
+        answer = self._repair_mojibake(answer)
 
         # Recopilar solo la fuente principal sugerida
         sources = [main_source] if main_source else []

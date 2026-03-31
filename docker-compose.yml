@@ -15,7 +15,7 @@ services:
     networks:
       - gapid-network
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U gapid_user"]
+      test: ["CMD-SHELL", "pg_isready -U gapid_user -d gapid_db"]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -30,6 +30,7 @@ services:
     volumes:
       - ./backend:/app
       - ./data:/app/data
+      - hf_cache:/root/.cache/huggingface
     ports:
       - "8000:8000"
     environment:
@@ -77,3 +78,4 @@ networks:
 
 volumes:
   postgres_data:
+  hf_cache:
